@@ -1,0 +1,233 @@
+{
+  $schema: "http://json-schema.org/draft-07/schema#",
+  title: "LinkedIn Resume Schema",
+  description: "A schema for structured resume data from LinkedIn",
+  type: "object",
+  required: ["basics", "education", "work"],
+  properties: {
+    basics: {
+      type: "object",
+      required: ["name", "label", "location", "contact", "summary"],
+      properties: {
+        name: {
+          type: "string",
+          description: "Full name",
+        },
+        label: {
+          type: "string",
+          description: "Professional headline",
+        },
+        location: {
+          type: "object",
+          required: ["city", "state", "country"],
+          properties: {
+            city: {
+              type: "string",
+            },
+            state: {
+              type: "string",
+            },
+            country: {
+              type: "string",
+            },
+          },
+        },
+        contact: {
+          type: "object",
+          required: ["email", "profiles"],
+          properties: {
+            email: {
+              type: "string",
+              format: "email",
+            },
+            profiles: {
+              type: "array",
+              items: {
+                type: "object",
+                required: ["network", "url"],
+                properties: {
+                  network: {
+                    type: "string",
+                  },
+                  url: {
+                    type: "string",
+                    format: "uri",
+                  },
+                },
+              },
+            },
+          },
+        },
+        summary: {
+          type: "string",
+          description: "Professional summary or objective",
+        },
+      },
+    },
+    education: {
+      type: "array",
+      items: {
+        type: "object",
+        required: ["institution", "startDate", "endDate"],
+        properties: {
+          institution: {
+            type: "string",
+          },
+          area: {
+            type: "string",
+          },
+          studyType: {
+            type: "string",
+          },
+          startDate: {
+            type: "string",
+            format: "date-time",
+          },
+          endDate: {
+            type: "string",
+            format: "date-time",
+          },
+        },
+      },
+    },
+    work: {
+      type: "array",
+      items: {
+        type: "object",
+        required: ["company"],
+        properties: {
+          company: {
+            type: "string",
+          },
+          totalDuration: {
+            type: "string",
+          },
+          positions: {
+            type: "array",
+            items: {
+              type: "object",
+              required: ["title", "startDate"],
+              properties: {
+                title: {
+                  type: "string",
+                },
+                startDate: {
+                  type: "string",
+                  format: "date-time",
+                },
+                endDate: {
+                  type: "string",
+                  format: "date-time",
+                },
+                location: {
+                  type: "string",
+                },
+                team: {
+                  type: "string",
+                },
+                description: {
+                  type: "string",
+                },
+                technologies: {
+                  type: "object",
+                  properties: {
+                    "AI Framework": {
+                      type: "string",
+                    },
+                    Languages: {
+                      type: "array",
+                      items: {
+                        type: "string",
+                      },
+                    },
+                    "Robot Control": {
+                      type: "string",
+                    },
+                    Networking: {
+                      type: "string",
+                    },
+                  },
+                },
+              },
+            },
+          },
+          position: {
+            type: "string",
+          },
+          startDate: {
+            type: "string",
+            format: "date-time",
+          },
+          endDate: {
+            type: "string",
+            format: "date-time",
+          },
+          location: {
+            type: "string",
+          },
+          duration: {
+            type: "string",
+          },
+          description: {
+            type: "string",
+          },
+        },
+      },
+    },
+    skills: {
+      type: "object",
+      properties: {
+        topSkills: {
+          type: "array",
+          items: {
+            type: "string",
+          },
+        },
+        technical: {
+          type: "object",
+          properties: {
+            languages: {
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+            frameworks: {
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+            cloud: {
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+            tools: {
+              type: "array",
+              items: {
+                type: "string",
+              },
+            },
+          },
+        },
+      },
+    },
+    awards: {
+      type: "array",
+      items: {
+        type: "object",
+        required: ["title"],
+        properties: {
+          title: {
+            type: "string",
+          },
+          description: {
+            type: "string",
+          },
+        },
+      },
+    },
+  },
+}
