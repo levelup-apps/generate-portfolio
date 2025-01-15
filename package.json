@@ -1,7 +1,11 @@
 {
+	"type": "module",
 	"dependencies": {
+		"@ai-sdk/openai": "^1.0.19",
 		"@inquirer/prompts": "^7.2.3",
-		"inquirer": "^9.0.0"
+		"ai": "^4.0.38",
+		"inquirer": "^9.0.0",
+		"zod": "^3.24.1"
 	},
 	"devDependencies": {
 		"degit": "^2.8.4"
