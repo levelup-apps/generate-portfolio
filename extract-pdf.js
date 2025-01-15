@@ -1,5 +1,7 @@
 import { generateObject } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { anthropic, createAnthropic } from "@ai-sdk/anthropic";
+
 import fs from 'fs/promises';
 import { resumeSchema } from "./resume-schema.js";
 
@@ -27,8 +29,8 @@ async function getPdfFileContent() {
 async function generate() {
     
     // Read the resume file from a static text file or given PDF file
-    const fileContent = await getStaticFileContent();
-    // const fileContent = await getPdfFileContent();
+    // const fileContent = await getStaticFileContent();
+    const fileContent = await getPdfFileContent();
 
     const systemPrompt = `
 You are a helpful assistant. Your job is to extract data from the input and generate a structured output. 
@@ -40,8 +42,15 @@ Input: ${fileContent}
     `;
 
     try {
+        // This is not working with .env.local
+        // const customAnthropic = createAnthropic({
+        //     apiKey: process.env.ANTHROPIC_API_KEY,
+        //     // Add other options as needed
+        // });
+
         const { object } = await generateObject({
-            model: openai("gpt-4"),
+            // model: openai("gpt-4"),
+            model: anthropic("claude-3-5-sonnet-latest"),
             system: systemPrompt,
             prompt: userPrompt,
             schema: resumeSchema,
