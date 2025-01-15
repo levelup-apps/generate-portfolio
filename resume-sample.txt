@@ -1,0 +1,31 @@
+Liza George
+UIUC BS+MCS in CS '25 | Microsoft SWE Intern
+Urbana, Illinois, United States
+
+Summary
+I'm a graduate student pursuing a BS+MCS joint degree in Computer
+Science in the University of Illinois Urbana Champaign. Through
+university courses and projects, I have worked with Python, C, C
+++, Java, and Rust, and studied the fundamentals of CS through
+fourth-year level courses. I have also gained leadership roles in the
+Society of Women Engineers and the Outdoor Adventure Club, and
+contributed to volunteer software services through Hack4Impact.
+
+Contact
+hi.liza.george@gmail.com
+
+www.linkedin.com/in/george-liza
+(LinkedIn)
+
+liza-george.chiramattel.com/
+(Portfolio)
+
+Top Skills
+Team Management
+University Teaching
+Semantic Kernel
+
+Honors-Awards
+AdaHacks III - First Place in Social
+Justice Division
+Flex Factor Finalist

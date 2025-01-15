@@ -16,7 +16,7 @@ const profileSchema = z.object({
 
 // Contact schema
 const contactSchema = z.object({
-    email: z.string().email(),
+    // email: z.string().email(),
     // linkedIn: z.string().email(),
     // socialProfiles: z.array(profileSchema),
 });
