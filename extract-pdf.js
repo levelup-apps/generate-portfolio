@@ -28,12 +28,71 @@ async function getFileContent(filePath) {
 async function extractJson(fileContent) {
 
     const systemPrompt = `
-You are a helpful assistant. Your job is to extract data from the input and generate a structured output. 
-`;
+You are an expert resume parser focused on accurately extracting structured data from resumes. When extracting information:
+1. Parse the content systematically, section by section
+2. Ensure all required fields from the schema are populated
+3. Format dates according to ISO 8601 (YYYY-MM-DD) specification
+4. Convert relative dates like "current" or "present" to today's date (2025-01-15)
+5. Validate the output against the provided JSON schema
+6. Flag any missing required fields or validation issues
+7. For any optional fields that are not present in the source text, omit them entirely from the output JSON rather than using null values
+8. Pay special attention to date fields - if a date is not known, the field should be omitted entirely from the output rather than being set to null
+9. For work experience entries, ensure each company has at least one position entry with required fields
+10. Handle nested optional fields (like technologies, team, location) by omitting them when not present
+
+For each section you parse, think step by step and explain your reasoning if there are any assumptions or transformations made.`;
+
     const userPrompt = `
-Extract structured data from this input. The output must match the schema given to you. 
-Input: ${fileContent}
-    `;
+Please extract structured data from the following textual respresentation of the resume:
+
+<resume>
+${fileContent}
+</resume>
+
+Critical requirements:
+1. All URLs must include https:// prefix
+2. Dates must be in ISO 8601 format with time (YYYY-MM-DDT00:00:00Z)
+3. If a date is unknown or not present in the resume,  omit it entirely from the output JSON - do not use placeholders like "<UNKNOWN>"
+4. For current/present positions, use today's date (2025-01-15T00:00:00Z)
+5. The "socialProfiles" array must include all social profiles found
+6. All dates should be interpreted as the first of the mentioned month (e.g. "May 2021" becomes "2021-05-01T00:00:00Z")
+
+Date handling for education and work experience:
+- If date is known: "startDate": "2021-05-01T00:00:00Z"
+- If date is unknown: omit the field entirely, do not use null
+- For current positions: use "endDate": "2025-01-15T00:00:00Z"
+
+Work experience specific requirements:
+1. Each work entry must have a company name and at least one position
+2. For positions array:
+   - Each position must have a title
+   - Include startDate if known, omit if unknown
+   - Include endDate if known, use current date for present positions, omit if unknown
+   - Include location, team, description if available, omit if not
+3. Technologies object should only be included if specific technologies are mentioned
+4. Duration fields should be omitted if not explicitly stated
+
+Example structure for work experience:
+{
+  "work": [
+    {
+      "company": "Company Name",
+      "positions": [
+        {
+          "title": "Job Title",
+          "startDate": "2020-08-01T00:00:00Z",
+          "endDate": "2025-01-15T00:00:00Z",  // for current position
+          "location": "City, State",
+          "description": "Job description"
+          // notice team and technologies are omitted when not present
+        }
+      ]
+    }
+  ]
+}
+
+Please process step by step and validate against these requirements.
+`;
 
     try {
         // Read API key from env local, but this is not working yet.
@@ -42,15 +101,20 @@ Input: ${fileContent}
         //     // Add other options as needed
         // });
 
+        // const model = openai("gpt-4");
+        const model = anthropic("claude-3-5-sonnet-latest");
+
         const { object } = await generateObject({
-            // model: openai("gpt-4"),
-            model: anthropic("claude-3-5-sonnet-latest"),
+            model: model,
             system: systemPrompt,
             prompt: userPrompt,
             schema: resumeSchema,
         });
 
+        console.log(`INFO: Success generating JSON object using LLM: ${model.provider} ${model.modelId}`);
+
         return object;
+
     } catch (error) {
         console.error("Error generating object:", error);
         throw error;
@@ -58,13 +122,10 @@ Input: ${fileContent}
 }
 
 async function parse(filePath) {
-    // Read the resume file from a static text file or PDF file
-    // const filePath = "./resume-sample.txt";
-    // const filePath = "./resume-sample.pdf";
     
     if(!filePath) {
         // If filePath is invalid, read the resume file from a static file - plain txt or PDF file
-        console.log(`INFO: File not specified. Defaulting to the static file`);
+        console.log(`INFO: Resume file not specified. Defaulting to the static file`);
         filePath = "./resume-sample.pdf";
         // filePath = "./resume-sample.txt";
     }
