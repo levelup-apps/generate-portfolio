@@ -3,6 +3,7 @@ import inquirer from 'inquirer';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs/promises';
+import { parse } from "./resume-parser.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -22,11 +23,12 @@ const THEMES = {
     RETRO: 'Retro (coming soon)'
 };
 
-async function validatePdfFile(filePath) {
+async function validateFile(filePath) {
     try {
         const stats = await fs.stat(filePath);
-        if (!filePath.toLowerCase().endsWith('.pdf')) {
-            return 'Please provide a PDF file';
+        const lowerPath = filePath.toLowerCase();
+        if (!lowerPath.endsWith(".pdf") && !lowerPath.endsWith(".txt")) {
+            return "Please provide a PDF or text file";
         }
         return true;
     } catch (error) {
@@ -48,10 +50,13 @@ async function promptUser() {
             }
         },
         {
-            type: 'input',
-            name: 'resumeFile',
-            message: 'Enter the path to your LinkedIn formatted resume (PDF):',
-            validate: validatePdfFile
+            type: "input",
+            name: "resumeFile",
+            message: "Enter the path to your LinkedIn formatted resume (PDF):",
+            validate: async (input) => {
+                const result = await validateFile(input);
+                return result;
+            },
         },
         {
             type: 'checkbox',
@@ -127,8 +132,14 @@ async function main() {
         const answers = await promptUser();
 
         if (answers) {
+            console.log('\n');
+
             const templatePath = await downloadTemplate(answers.theme);
             console.log(`\nTemplate downloaded to: ${templatePath}`);
+
+            const resumeJson = await parse(answers.resumeFile);
+            console.log("Generated JSON object..\n", resumeJson);
+
             console.log('\nNext steps:');
             console.log('1. Navigate to your project directory');
             console.log('2. Customize your portfolio content');

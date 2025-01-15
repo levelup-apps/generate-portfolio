@@ -126,23 +126,26 @@ async function parse(filePath) {
     if(!filePath) {
         // If filePath is invalid, read the resume file from a static file - plain txt or PDF file
         console.log(`INFO: Resume file not specified. Defaulting to the static file`);
-        filePath = "./resume-sample.pdf";
-        // filePath = "./resume-sample.txt";
+        // filePath = "./resume-sample.pdf";
+        filePath = "./resume-sample.txt";
     }
     console.log(`INFO: Parsing resume file: ${filePath}`);
 
     const fileContent = await getFileContent(filePath);
     const resumeJson = await extractJson(fileContent);
 
-    console.log("INFO: Generated JSON object..\n", resumeJson);
+    return resumeJson;
 }
 
 // Use async IIFE to run the main function
 (async function main() {
     try {
-        await parse();
+        const resumeJson = await parse();
+        console.log("INFO: Generated JSON object..\n", resumeJson);
     } catch (error) {
         console.error("Error in main:", error);
         process.exit(1);
     }
 })();
+
+export { parse };
