@@ -4,6 +4,7 @@ import { anthropic, createAnthropic } from "@ai-sdk/anthropic";
 
 import fs from 'fs/promises';
 import path from "path";
+import { fileURLToPath } from "url";
 
 import { resumeSchema } from "./resume-schema.js";
 
@@ -124,11 +125,10 @@ Please process step by step and validate against these requirements.
 async function parse(filePath) {
     
     if(!filePath) {
-        // If filePath is invalid, read the resume file from a static file - plain txt or PDF file
-        console.log(`INFO: Resume file not specified. Defaulting to the static file`);
-        // filePath = "./resume-sample.pdf";
-        filePath = "./resume-sample.txt";
+        console.log(`ERROR: Resume file not specified. Cannot parse the resume.`);
+        return;
     }
+
     console.log(`INFO: Parsing resume file: ${filePath}`);
 
     const fileContent = await getFileContent(filePath);
@@ -137,15 +137,19 @@ async function parse(filePath) {
     return resumeJson;
 }
 
-// Use async IIFE to run the main function
-(async function main() {
-    try {
-        const resumeJson = await parse();
-        console.log("INFO: Generated JSON object..\n", resumeJson);
-    } catch (error) {
-        console.error("Error in main:", error);
-        process.exit(1);
-    }
-})();
+// Run the main function only if this file is being run directly
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+    (async function main() {
+        try {
+            // const filePath = "./resume-sample.pdf";
+            const filePath = "./resume-sample.txt";
+            const resumeJson = await parse(filePath);
+            console.log("INFO: Generated JSON object..\n", resumeJson);
+        } catch (error) {
+            console.error("Error in main:", error);
+            process.exit(1);
+        }
+    })();
+}
 
 export { parse };
