@@ -2,5 +2,8 @@
 	"dependencies": {
 		"@inquirer/prompts": "^7.2.3",
 		"inquirer": "^9.0.0"
+	},
+	"devDependencies": {
+		"degit": "^2.8.4"
 	}
 }

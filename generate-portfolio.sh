@@ -26,11 +26,10 @@ cd "$TEMP_DIR" || exit 1
 # Install required dependencies
 echo "Installing required dependencies..."
 pnpm add inquirer@^9.0.0 >/dev/null 2>&1
+pnpm add -D degit >/dev/null 2>&1
 
-# Download or copy the generate-portfolio.js script
-# For now, assuming it's in the same directory as this script
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cp "$SCRIPT_DIR/generate-portfolio.js" .
+# Download the generate-portfolio.js script and related files from https://github.com/levelup-apps/generate-portfolio using degit
+degit levelup-apps/generate-portfolio >/dev/null 2>&1
 
 # Run the Node.js script
 node generate-portfolio.js
