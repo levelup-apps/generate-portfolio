@@ -52,7 +52,7 @@ ${fileContent}
 Critical requirements:
 1. All URLs must include https:// prefix
 2. Dates must be in ISO 8601 format with time (YYYY-MM-DDT00:00:00Z)
-3. If a date is unknown or not present in the resume,  omit it entirely from the output JSON - do not use placeholders like "<UNKNOWN>"
+3. If a date is unknown or not present in the resume, DO NOT include that field in the output JSON at all
 4. For current/present positions, use today's date (2025-01-15T00:00:00Z)
 5. The "socialProfiles" array must include all social profiles found
 6. All dates should be interpreted as the first of the mentioned month (e.g. "May 2021" becomes "2021-05-01T00:00:00Z")
