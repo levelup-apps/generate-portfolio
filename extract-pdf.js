@@ -1,25 +1,7 @@
 import { generateObject } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { z } from "zod";
-
-const schema1 = z.object({
-    notifications: z.array(
-        z.object({
-            name: z.string().describe("Name of a fictional person."),
-            message: z.string().describe("Do not use emojis or links."),
-            minutesAgo: z.number(),
-        })
-    ),
-});
-
-const schema = z.object({
-    basics: z.object({
-        name: z.string().describe("Full name of a fictional person."),
-        headline: z.string().describe("Professional headline. Do not use emojis or links."),
-        email: z.string().describe("Email address of the person"),
-        // minutesAgo: z.number(),
-    }),
-});
+import { resumeSchema } from "./resume-schema.js";
 
 async function generate() {
 
@@ -71,7 +53,7 @@ Input: ${fileContent}
             model: openai("gpt-4"),
             system: systemPrompt,
             prompt: userPrompt,
-            schema: schema,
+            schema: resumeSchema,
         });
 
         console.log('......Generated JSON object....\n', object);
