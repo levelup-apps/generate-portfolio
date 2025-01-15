@@ -1,23 +1,20 @@
-Liza George
-UIUC BS+MCS in CS '25 | Microsoft SWE Intern
-Urbana, Illinois, United States
+Amy Woodworth
+SLU BS in CS '25 | Acme SWE Intern
+Hammond, LA, United States
 
 Summary
-I'm a graduate student pursuing a BS+MCS joint degree in Computer
-Science in the University of Illinois Urbana Champaign. Through
-university courses and projects, I have worked with Python, C, C
-++, Java, and Rust, and studied the fundamentals of CS through
-fourth-year level courses. I have also gained leadership roles in the
-Society of Women Engineers and the Outdoor Adventure Club, and
-contributed to volunteer software services through Hack4Impact.
+Project management and consulting experience primarily focused upon nonprofit projects, requiring quick
+turnarounds and extensive troubleshooting. Proven skills in planning, strategy development, and 
+knowledge of customer and client business processes. 
+Excellent team-building and management skills with demonstrated success
 
 Contact
-hi.liza.george@gmail.com
+abc.def@example.com
 
-www.linkedin.com/in/george-liza
+www.linkedin.com/in/john-doe
 (LinkedIn)
 
-liza-george.chiramattel.com/
+me.example.com/
 (Portfolio)
 
 Top Skills
