@@ -19,7 +19,7 @@ const PORTFOLIO_SECTIONS = {
 };
 
 const THEMES = {
-    SIMPLE: 'Simple',
+    SIMPLE: 'Simple [View sample: https://portfolio-generator-sample.vercel.app/]',
     RETRO: 'Retro (coming soon)',
 };
 
