@@ -5,7 +5,7 @@ import fs from 'fs';
 import { parse } from './resume-parser.js';
 import { generateAllMarkdowns } from './md-generator.js';
 
-import degit from 'degit';
+import { spawn } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -133,17 +133,26 @@ async function downloadTemplate(userName, theme) {
         console.log(`ERROR: Failed to create folder. `, error);
     }
 
-    const emitter = degit('https://github.com/levelup-apps/portfolio-template#HEAD', {
-        cache: true,
-        force: true,
-        verbose: true,
+    const degitProcess = spawn('npx', ['degit', 'levelup-apps/portfolio-template', '--force', portfolioPath]);
+
+    degitProcess.stdout.on('data', (data) => {
+        console.log(`Degit stdout: ${data}`);
     });
 
-    emitter.on('info', info => {
-        console.log(`Degit message: ${info.message}`);
+    degitProcess.stderr.on('data', (data) => {
+        console.error(`Degit : ${data}`);
     });
 
-    await emitter.clone(portfolioPath);
+    await new Promise((resolve, reject) => {
+        degitProcess.on('close', (code) => {
+            if (code !== 0) {
+                reject(new Error(`Degit process exited with code ${code}`));
+            } else {
+                console.log('Degit process completed successfully');
+                resolve();
+            }
+        });
+    });
 
     return portfolioPath;
 }
