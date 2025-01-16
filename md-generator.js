@@ -181,7 +181,6 @@ function generateAllMarkdowns(resumeJson, portfolioRepoPath) {
         const experienceMarkdown = generateExperienceMarkdown(resumeJson.experience);
         fs.writeFileSync(path.join(content_folder, 'experience.md'), experienceMarkdown);
     }
-    // TODO repeat for other sections
 }
 
 export { generateAllMarkdowns };

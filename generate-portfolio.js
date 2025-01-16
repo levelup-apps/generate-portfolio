@@ -1,15 +1,18 @@
 import inquirer from 'inquirer';
+import inquirerFuzzyPath from 'inquirer-fuzzy-path'; // P1e39
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
 import path from 'path';
 import { parseResume } from './resume-parser.js';
 import { generateAllMarkdowns } from './md-generator.js';
-
 import { spawn } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+// Register the fuzzy path prompt
+inquirer.registerPrompt('fuzzypath', inquirerFuzzyPath); // P115e
 
 const PORTFOLIO_SECTIONS = {
     SUMMARY: 'Professional summary',
@@ -28,7 +31,7 @@ const THEMES = {
 
 async function validateFile(filePath) {
     try {
-        const stats = await fs.promises.stat(filePath);
+        await fs.promises.stat(filePath);
         const lowerPath = filePath.toLowerCase();
         if (!lowerPath.endsWith('.pdf') && !lowerPath.endsWith('.txt')) {
             return 'Please provide a PDF or text file';
@@ -42,24 +45,16 @@ async function validateFile(filePath) {
 async function promptUser() {
     const questions = [
         {
-            type: 'input',
-            name: 'userName',
-            message: 'What is your name?',
-            validate: (input) => {
-                if (input.trim() === '') {
-                    return 'Project name cannot be empty';
-                }
-                return true;
-            },
-        },
-        {
-            type: 'input',
+            type: 'fuzzypath', // Pf5f8
             name: 'resumeFile',
             message: 'Enter the path to your LinkedIn formatted resume (PDF):',
-            validate: async (input) => {
-                const result = await validateFile(input);
-                return result;
-            },
+            itemType: 'any',
+            rootPath: '.',
+            suggestOnly: false,
+            default: 'samples/',
+            depthLimit: 5,
+            excludePath: nodePath => nodePath.startsWith('node_modules'),
+            excludeFilter: nodePath => !nodePath.endsWith('.pdf') && !nodePath.endsWith('.txt')
         },
         {
             type: 'checkbox',
@@ -87,7 +82,6 @@ async function promptUser() {
     // Show review screen
     console.log('\nReview your choices:');
     console.log('-------------------');
-    console.log(`Name: ${answers.userName}`);
     console.log(`Resume File: ${answers.resumeFile}`);
     console.log('Selected Sections:');
     answers.sections.forEach((section) => console.log(`- ${section}`));
@@ -110,10 +104,8 @@ async function promptUser() {
     return answers;
 }
 
-async function downloadTemplate(userName, theme) {
-    // Implement template downloading logic here
-    // For now, we'll just log the action
-    console.log(`Downloading ${theme} template...`);
+async function downloadTemplate(theme) {
+    console.log(`> Downloading template...`);
 
     if (theme === THEMES.RETRO) {
         console.log(
@@ -122,12 +114,8 @@ async function downloadTemplate(userName, theme) {
         theme = THEMES.SIMPLE;
     }
 
-    // Here you would typically:
-    // 1. Download template from a repository or local storage
-    // 2. Degit into the portfolio directory
-    // 3. Return the path to the portfolio directory
-
-    const portfolioPath = join(__dirname, `./my-portfolio`);
+    // TODO: temporary, till we use the user-defined dest path
+    const portfolioPath = join(__dirname, `../my-portfolio`);
     try {
         await fs.promises.mkdir(portfolioPath, {recursive: true});
     } catch(error) {
@@ -137,19 +125,18 @@ async function downloadTemplate(userName, theme) {
     const degitProcess = spawn('npx', ['degit', 'levelup-apps/portfolio-template', '--force', portfolioPath]);
 
     degitProcess.stdout.on('data', (data) => {
-        console.log(`Degit stdout: ${data}`);
+        console.log(`> Degit log: ${data}`);
     });
 
     degitProcess.stderr.on('data', (data) => {
-        console.error(`Degit : ${data}`);
+        console.log(`> Degit: ${data}`); // this show a non error message too, nothing to do abt it
     });
 
     await new Promise((resolve, reject) => {
         degitProcess.on('close', (code) => {
             if (code !== 0) {
-                reject(new Error(`Degit process exited with code ${code}`));
+                reject(new Error(`> Degit process exited with code ${code}`));
             } else {
-                console.log('Degit process completed successfully');
                 resolve();
             }
         });
@@ -167,8 +154,8 @@ async function main() {
         if (answers) {
             console.log('\n');
 
-            const portfolioPath = await downloadTemplate(answers.userName, answers.theme);
-            console.log(`\nPortfolio template downloaded to: ${portfolioPath}`);
+            const portfolioPath = await downloadTemplate(answers.theme);
+            console.log('> Portfolio template downloaded.\n');
 
             // set to true to use LLM to generate. false to use static file.
             const useLiveLLM = false;
@@ -192,9 +179,12 @@ async function main() {
             }
 
             generateAllMarkdowns(resumeJson, portfolioPath);
-            console.log('Converted to markdown.\n');
+            console.log('> Extracted resume content into portfolio.\n');
 
-            console.log(`Portfolio site generated successfully! See preview in ${portfolioPath}.`);
+            console.log(
+                `> Portfolio local copy available at: ${portfolioPath}`
+            );
+
         }
     } catch (error) {
         console.error('An error occurred:', error);
