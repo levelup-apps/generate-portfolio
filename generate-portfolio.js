@@ -1,14 +1,17 @@
 import inquirer from 'inquirer';
+import inquirerFuzzyPath from 'inquirer-fuzzy-path'; // P1e39
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
-import { parse } from './resume-parser.js';
 import { generateAllMarkdowns } from './md-generator.js';
 
 import { spawn } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+// Register the fuzzy path prompt
+inquirer.registerPrompt('fuzzypath', inquirerFuzzyPath); // P115e
 
 const PORTFOLIO_SECTIONS = {
     SUMMARY: 'Professional summary',
@@ -41,13 +44,16 @@ async function validateFile(filePath) {
 async function promptUser() {
     const questions = [
         {
-            type: 'input',
+            type: 'fuzzypath', // Pf5f8
             name: 'resumeFile',
             message: 'Enter the path to your LinkedIn formatted resume (PDF):',
-            validate: async (input) => {
-                const result = await validateFile(input);
-                return result;
-            },
+            itemType: 'any',
+            rootPath: '.',
+            suggestOnly: false,
+            default: 'samples/',
+            depthLimit: 5,
+            excludePath: nodePath => nodePath.startsWith('node_modules'),
+            excludeFilter: nodePath => !nodePath.endsWith('.pdf') && !nodePath.endsWith('.txt')
         },
         {
             type: 'checkbox',
@@ -150,7 +156,7 @@ async function main() {
             const portfolioPath = await downloadTemplate(answers.theme);
             console.log(`\nPortfolio created at: ${portfolioPath}`);
 
-            // const resumeJson = await parse(answers.resumeFile);
+            // const resumeJson = await parse(join(__dirname, answers.resumeFile));
             const resumeText = await fs.promises.readFile(
                 'samples/liza-parsed.json',
                 'utf8'
