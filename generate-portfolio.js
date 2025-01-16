@@ -27,7 +27,7 @@ const THEMES = {
 
 async function validateFile(filePath) {
     try {
-        const stats = await fs.promises.stat(filePath);
+        await fs.promises.stat(filePath);
         const lowerPath = filePath.toLowerCase();
         if (!lowerPath.endsWith('.pdf') && !lowerPath.endsWith('.txt')) {
             return 'Please provide a PDF or text file';
@@ -110,8 +110,6 @@ async function promptUser() {
 }
 
 async function downloadTemplate(userName, theme) {
-    // Implement template downloading logic here
-    // For now, we'll just log the action
     console.log(`Downloading ${theme} template...`);
 
     if (theme === THEMES.RETRO) {
@@ -120,11 +118,6 @@ async function downloadTemplate(userName, theme) {
         );
         theme = THEMES.SIMPLE;
     }
-
-    // Here you would typically:
-    // 1. Download template from a repository or local storage
-    // 2. Degit into the portfolio directory
-    // 3. Return the path to the portfolio directory
 
     const portfolioPath = join(__dirname, `./my-portfolio`);
     try {
@@ -175,10 +168,7 @@ async function main() {
                 'utf8'
             ); // TODO for debugging
             const resumeJson = JSON.parse(resumeText);
-            // console.log('Generated JSON object..\n', resumeJson);
 
-            // TODO use user selected path here
-            // generateAllMarkdowns(resumeJson, './liza-portfolio');
             generateAllMarkdowns(resumeJson, portfolioPath);
             console.log('Converted to markdown.\n');
 

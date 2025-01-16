@@ -181,7 +181,6 @@ function generateAllMarkdowns(resumeJson, portfolioRepoPath) {
         const workMarkdown = generateWorkMarkdown(resumeJson.work);
         fs.writeFileSync(path.join(content_folder, 'work.md'), workMarkdown);
     }
-    // TODO repeat for other sections
 }
 
 export { generateAllMarkdowns };

@@ -102,7 +102,6 @@ Please process step by step and validate against these requirements.
         // Read API key from env local, but this is not working yet.
         const customAnthropic = createAnthropic({
             apiKey: process.env.ANTHROPIC_API_KEY,
-            // Add other options as needed
         });
 
         // const model = openai("gpt-4");
