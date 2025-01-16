@@ -164,7 +164,7 @@ async function main() {
             if(useLiveLLM) {
                 console.log(`Parsing the PDF resume with AI ...`);
                 resumeJson = await parseResume(answers.resumeFile);
-                console.log('Generated resume JSON ....\n', resumeJson);
+                // console.log('Generated resume JSON ....\n', resumeJson);
 
                 // write the resumeJson to the content folder
                 fs.writeFileSync(path.join(portfolioPath, 'content', 'resume-data.json'), JSON.stringify(resumeJson));
