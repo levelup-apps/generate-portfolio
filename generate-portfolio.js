@@ -42,17 +42,6 @@ async function promptUser() {
     const questions = [
         {
             type: 'input',
-            name: 'userName',
-            message: 'What is your name?',
-            validate: (input) => {
-                if (input.trim() === '') {
-                    return 'Project name cannot be empty';
-                }
-                return true;
-            },
-        },
-        {
-            type: 'input',
             name: 'resumeFile',
             message: 'Enter the path to your LinkedIn formatted resume (PDF):',
             validate: async (input) => {
@@ -86,7 +75,6 @@ async function promptUser() {
     // Show review screen
     console.log('\nReview your choices:');
     console.log('-------------------');
-    console.log(`Name: ${answers.userName}`);
     console.log(`Resume File: ${answers.resumeFile}`);
     console.log('Selected Sections:');
     answers.sections.forEach((section) => console.log(`- ${section}`));
@@ -109,7 +97,7 @@ async function promptUser() {
     return answers;
 }
 
-async function downloadTemplate(userName, theme) {
+async function downloadTemplate(theme) {
     console.log(`Downloading ${theme} template...`);
 
     if (theme === THEMES.RETRO) {
@@ -159,7 +147,7 @@ async function main() {
         if (answers) {
             console.log('\n');
 
-            const portfolioPath = await downloadTemplate(answers.userName, answers.theme);
+            const portfolioPath = await downloadTemplate(answers.theme);
             console.log(`\nPortfolio created at: ${portfolioPath}`);
 
             // const resumeJson = await parse(answers.resumeFile);
