@@ -5,6 +5,7 @@ import { anthropic, createAnthropic } from "@ai-sdk/anthropic";
 import fs from 'fs/promises';
 import path from "path";
 import { fileURLToPath } from "url";
+import pdf from 'pdf-parse';
 
 import { resumeSchema } from "./resume-schema.js";
 
@@ -13,9 +14,10 @@ async function getFileContent(filePath) {
         const fileExtension = path.extname(filePath).toLowerCase();
 
         if (fileExtension === ".pdf") {
-            // For pdf files, return as base64 encoded string
+            // For pdf files, extract text using pdf-parse
             const fileBuffer = await fs.readFile(filePath);
-            return fileBuffer.toString("base64");
+            const data = await pdf(fileBuffer);
+            return data.text;
         } else {
             // For text files or any other format, return as plain text
             return await fs.readFile(filePath, "utf8");
