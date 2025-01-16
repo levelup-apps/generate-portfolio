@@ -1,4 +1,3 @@
-// generate-portfolio.js
 import inquirer from 'inquirer';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
@@ -132,8 +131,7 @@ async function main() {
     try {
         console.log('Welcome to Portfolio Generator!\n');
 
-        // const answers = await promptUser();
-        const answers = {};
+        const answers = await promptUser();
 
         if (answers) {
             console.log('\n');
@@ -147,7 +145,7 @@ async function main() {
                 'utf8'
             ); // TODO for debugging
             const resumeJson = JSON.parse(resumeText);
-            console.log('Generated JSON object..\n');
+            // console.log('Generated JSON object..\n', resumeJson);
 
             // TODO use user selected path here
             generateAllMarkdowns(resumeJson, './liza-portfolio');

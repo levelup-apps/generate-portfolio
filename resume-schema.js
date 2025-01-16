@@ -3,14 +3,14 @@ import { z } from "zod";
 
 // Location schema
 const locationSchema = z.object({
-    city: z.string(),
-    state: z.string(),
-    country: z.string(),
+    city: z.string().nullish(),
+    state: z.string().nullish(),
+    country: z.string().nullish(),
 });
 
 // Social profile schema
 const socialProfileSchema = z.object({
-    network: z.string(),
+    network: z.string().nullish(),
     url: z.string().url(),
 });
 
@@ -23,19 +23,19 @@ const contactSchema = z.object({
 
 // Basic info schema
 const basicsSchema = z.object({
-    name: z.string().describe("Full name"),
-    headline: z.string().describe("Professional headline"),
+    name: z.string().nullish().describe("Full name"),
+    headline: z.string().nullish().describe("Professional headline"),
     location: locationSchema,
     contact: contactSchema,
-    summary: z.string().describe("Professional summary or objective"),
+    summary: z.string().nullish().describe("Professional summary or objective"),
 });
 
 // Education schema
 const educationSchema = z.array(
     z.object({
-        institution: z.string(),
-        area: z.string().optional(),
-        studyType: z.string().optional(),
+        institution: z.string().nullish().optional(),
+        area: z.string().nullish().optional(),
+        studyType: z.string().nullish().optional(),
         startDate: z
             .string()
             .datetime()
@@ -51,13 +51,13 @@ const educationSchema = z.array(
 
 // Work experience schema
 const positionSchema = z.object({
-    title: z.string(),
-    startDate: z.string().datetime(),
+    title: z.string().nullish(),
+    startDate: z.string().datetime().optional(),
     endDate: z.string().datetime().optional(),
-    location: z.string().optional(),
-    team: z.string().optional(),
-    description: z.string().optional(),
-    technologies: z.string().optional(),
+    location: z.string().nullish().optional(),
+    team: z.string().nullish().optional(),
+    description: z.string().nullish().optional(),
+    technologies: z.string().nullish().optional(),
 });
 
 const workSchema = z.array(
@@ -65,18 +65,18 @@ const workSchema = z.array(
         company: z.string(),
         totalDuration: z.string().optional(),
         positions: z.array(positionSchema),
-        position: z.string().optional(),
+        position: z.string().nullish().optional(),
         startDate: z.string().datetime().optional(),
         endDate: z.string().datetime().optional(),
-        location: z.string().optional(),
-        duration: z.string().optional(),
-        description: z.string().optional(),
+        location: z.string().nullish().optional(),
+        duration: z.string().nullish().optional(),
+        description: z.string().nullish().optional(),
     })
 );
 
 // Combined resume schema
 export const resumeSchema = z.object({
-    basics: basicsSchema,
+    basics: basicsSchema.optional(),
     education: educationSchema.optional(),
-    work: workSchema, 
+    work: workSchema.optional(),
 });

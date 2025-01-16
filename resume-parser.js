@@ -1,10 +1,12 @@
 import { generateObject } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { anthropic, createAnthropic } from "@ai-sdk/anthropic";
+import 'dotenv/config';
 
 import fs from 'fs/promises';
 import path from "path";
 import { fileURLToPath } from "url";
+import pdf from 'pdf-extraction';
 
 import { resumeSchema } from "./resume-schema.js";
 
@@ -13,9 +15,10 @@ async function getFileContent(filePath) {
         const fileExtension = path.extname(filePath).toLowerCase();
 
         if (fileExtension === ".pdf") {
-            // For pdf files, return as base64 encoded string
+            // For pdf files, extract text using pdf-parse
             const fileBuffer = await fs.readFile(filePath);
-            return fileBuffer.toString("base64");
+            const data = await pdf(fileBuffer);
+            return data.text;
         } else {
             // For text files or any other format, return as plain text
             return await fs.readFile(filePath, "utf8");
@@ -97,13 +100,13 @@ Please process step by step and validate against these requirements.
 
     try {
         // Read API key from env local, but this is not working yet.
-        // const customAnthropic = createAnthropic({
-        //     apiKey: process.env.ANTHROPIC_API_KEY,
-        //     // Add other options as needed
-        // });
+        const customAnthropic = createAnthropic({
+            apiKey: process.env.ANTHROPIC_API_KEY,
+            // Add other options as needed
+        });
 
         // const model = openai("gpt-4");
-        const model = anthropic("claude-3-5-sonnet-latest");
+        const model = customAnthropic("claude-3-5-sonnet-latest");
 
         const { object } = await generateObject({
             model: model,
