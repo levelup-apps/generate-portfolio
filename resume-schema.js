@@ -11,12 +11,12 @@ const locationSchema = z.object({
 // Social profile schema
 const socialProfileSchema = z.object({
     network: z.string().nullish(),
-    url: z.string().url(),
+    url: z.string().url().nullish(),
 });
 
 // Contact schema
 const contactSchema = z.object({
-    email: z.string().email().optional(),
+    email: z.string().nullish().optional(),
     linkedInUrl: z.string().url(),
     socialProfiles: z.array(socialProfileSchema),
 });
@@ -39,11 +39,13 @@ const educationSchema = z.array(
         startDate: z
             .string()
             .datetime()
+            .nullish()
             .optional()
             .transform((val) => val || undefined),
         endDate: z
             .string()
             .datetime()
+            .nullish()
             .optional()
             .transform((val) => val || undefined),
     })
@@ -52,8 +54,8 @@ const educationSchema = z.array(
 // Work Experience schema
 const positionSchema = z.object({
     title: z.string().nullish(),
-    startDate: z.string().datetime().optional(),
-    endDate: z.string().datetime().optional(),
+    startDate: z.string().datetime().nullish().optional(),
+    endDate: z.string().datetime().nullish().optional(),
     location: z.string().nullish().optional(),
     team: z.string().nullish().optional(),
     description: z.string().nullish().optional(),
@@ -63,11 +65,11 @@ const positionSchema = z.object({
 const experienceSchema = z.array(
     z.object({
         company: z.string(),
-        totalDuration: z.string().optional(),
+        totalDuration: z.string().nullish().optional(),
         positions: z.array(positionSchema),
         position: z.string().nullish().optional(),
-        startDate: z.string().datetime().optional(),
-        endDate: z.string().datetime().optional(),
+        startDate: z.string().datetime().nullish().optional(),
+        endDate: z.string().datetime().nullish().optional(),
         location: z.string().nullish().optional(),
         duration: z.string().nullish().optional(),
         description: z.string().nullish().optional(),
