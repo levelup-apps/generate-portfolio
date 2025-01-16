@@ -4,7 +4,6 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
 import { generateAllMarkdowns } from './md-generator.js';
-
 import { spawn } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -104,7 +103,7 @@ async function promptUser() {
 }
 
 async function downloadTemplate(theme) {
-    console.log(`Downloading ${theme} template...`);
+    console.log(`> Downloading template...`);
 
     if (theme === THEMES.RETRO) {
         console.log(
@@ -113,7 +112,8 @@ async function downloadTemplate(theme) {
         theme = THEMES.SIMPLE;
     }
 
-    const portfolioPath = join(__dirname, `./my-portfolio`);
+    // TODO: temporary, till we use the user-defined dest path
+    const portfolioPath = join(__dirname, `../my-portfolio`);
     try {
         await fs.promises.mkdir(portfolioPath, {recursive: true});
     } catch(error) {
@@ -123,19 +123,18 @@ async function downloadTemplate(theme) {
     const degitProcess = spawn('npx', ['degit', 'levelup-apps/portfolio-template', '--force', portfolioPath]);
 
     degitProcess.stdout.on('data', (data) => {
-        console.log(`Degit stdout: ${data}`);
+        console.log(`> Degit log: ${data}`);
     });
 
     degitProcess.stderr.on('data', (data) => {
-        console.error(`Degit : ${data}`);
+        console.log(`> Degit: ${data}`); // this show a non error message too, nothing to do abt it
     });
 
     await new Promise((resolve, reject) => {
         degitProcess.on('close', (code) => {
             if (code !== 0) {
-                reject(new Error(`Degit process exited with code ${code}`));
+                reject(new Error(`> Degit process exited with code ${code}`));
             } else {
-                console.log('Degit process completed successfully');
                 resolve();
             }
         });
@@ -154,7 +153,7 @@ async function main() {
             console.log('\n');
 
             const portfolioPath = await downloadTemplate(answers.theme);
-            console.log(`\nPortfolio created at: ${portfolioPath}`);
+            console.log('> Portfolio demplate downloaded.\n');
 
             // const resumeJson = await parse(join(__dirname, answers.resumeFile));
             const resumeText = await fs.promises.readFile(
@@ -164,9 +163,12 @@ async function main() {
             const resumeJson = JSON.parse(resumeText);
 
             generateAllMarkdowns(resumeJson, portfolioPath);
-            console.log('Converted to markdown.\n');
+            console.log('> Extracted resume content into portfolio.\n');
 
-            console.log('Portfolio generated successfully!');
+            console.log(
+                `> Portfolio local copy available ⚡ at: ${portfolioPath}`
+            );
+
         }
     } catch (error) {
         console.error('An error occurred:', error);
