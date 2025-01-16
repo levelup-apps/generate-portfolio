@@ -3,7 +3,8 @@ import inquirer from 'inquirer';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs/promises';
-import { parse } from "./resume-parser.js";
+import { parse } from './resume-parser.js';
+import { generateAllMarkdowns } from './md-generator.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -15,20 +16,20 @@ const PORTFOLIO_SECTIONS = {
     SKILLS: 'Skills',
     PROJECTS: 'Projects',
     CERTIFICATIONS: 'Certifications',
-    AWARDS: 'Awards/Achievements'
+    AWARDS: 'Awards/Achievements',
 };
 
 const THEMES = {
     SIMPLE: 'Simple',
-    RETRO: 'Retro (coming soon)'
+    RETRO: 'Retro (coming soon)',
 };
 
 async function validateFile(filePath) {
     try {
         const stats = await fs.stat(filePath);
         const lowerPath = filePath.toLowerCase();
-        if (!lowerPath.endsWith(".pdf") && !lowerPath.endsWith(".txt")) {
-            return "Please provide a PDF or text file";
+        if (!lowerPath.endsWith('.pdf') && !lowerPath.endsWith('.txt')) {
+            return 'Please provide a PDF or text file';
         }
         return true;
     } catch (error) {
@@ -47,12 +48,12 @@ async function promptUser() {
                     return 'Project name cannot be empty';
                 }
                 return true;
-            }
+            },
         },
         {
-            type: "input",
-            name: "resumeFile",
-            message: "Enter the path to your LinkedIn formatted resume (PDF):",
+            type: 'input',
+            name: 'resumeFile',
+            message: 'Enter the path to your LinkedIn formatted resume (PDF):',
             validate: async (input) => {
                 const result = await validateFile(input);
                 return result;
@@ -68,15 +69,15 @@ async function promptUser() {
                     return 'You must choose at least one section.';
                 }
                 return true;
-            }
+            },
         },
         {
             type: 'list',
             name: 'theme',
             message: 'Select a theme for your portfolio:',
             choices: Object.values(THEMES),
-            default: THEMES.SIMPLE
-        }
+            default: THEMES.SIMPLE,
+        },
     ];
 
     const answers = await inquirer.prompt(questions);
@@ -87,7 +88,7 @@ async function promptUser() {
     console.log(`Project Name: ${answers.projectName}`);
     console.log(`Resume File: ${answers.resumeFile}`);
     console.log('Selected Sections:');
-    answers.sections.forEach(section => console.log(`- ${section}`));
+    answers.sections.forEach((section) => console.log(`- ${section}`));
     console.log(`Theme: ${answers.theme}`);
 
     const confirmation = await inquirer.prompt([
@@ -95,12 +96,12 @@ async function promptUser() {
             type: 'confirm',
             name: 'confirmed',
             message: 'Are these choices correct?',
-            default: true
-        }
+            default: true,
+        },
     ]);
 
     if (!confirmation.confirmed) {
-        console.log('\nLet\'s start over...\n');
+        console.log("\nLet's start over...\n");
         return promptUser();
     }
 
@@ -113,7 +114,9 @@ async function downloadTemplate(theme) {
     console.log(`Downloading ${theme} template...`);
 
     if (theme === THEMES.RETRO) {
-        console.log('Note: Retro theme is coming soon. Using Simple theme instead.');
+        console.log(
+            'Note: Retro theme is coming soon. Using Simple theme instead.'
+        );
         theme = THEMES.SIMPLE;
     }
 
@@ -129,7 +132,8 @@ async function main() {
     try {
         console.log('Welcome to Portfolio Generator!\n');
 
-        const answers = await promptUser();
+        // const answers = await promptUser();
+        const answers = {};
 
         if (answers) {
             console.log('\n');
@@ -137,8 +141,17 @@ async function main() {
             const templatePath = await downloadTemplate(answers.theme);
             console.log(`\nTemplate downloaded to: ${templatePath}`);
 
-            const resumeJson = await parse(answers.resumeFile);
-            console.log("Generated JSON object..\n", resumeJson);
+            // const resumeJson = await parse(answers.resumeFile);
+            const resumeText = await fs.readFile(
+                'samples/liza-parsed.json',
+                'utf8'
+            ); // TODO for debugging
+            const resumeJson = JSON.parse(resumeText);
+            console.log('Generated JSON object..\n');
+
+            // TODO use user selected path here
+            generateAllMarkdowns(resumeJson, './liza-portfolio');
+            console.log('Converted to markdown.\n');
 
             console.log('\nNext steps:');
             console.log('1. Navigate to your project directory');
