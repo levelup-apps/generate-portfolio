@@ -26,12 +26,16 @@ pnpm i
 node generate-portfolio.js
 
 cd my-portfolio
+echo $PWD
 
 git init
 git add .
-git commit -mq "Initial commit"
+git commit -qm "Initial commit"
 
 gh repo create my-portfolio --public --source .
+git branch -M main
 git push -uq origin main
 
 echo "Your portfolio is available in your GitHub profile."
+
+# https://bolt.new/~/github.com/georgeck/my-portfolio
