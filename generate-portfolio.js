@@ -133,22 +133,14 @@ async function downloadTemplate(userName, theme) {
         console.log(`ERROR: Failed to create folder. `, error);
     }
 
-    const degitProcess = spawn('npx', ['degit', 'https://github.com/levelup-apps/portfolio-template#HEAD', portfolioPath]);
+    const degitProcess = spawn('npx', ['degit', 'levelup-apps/portfolio-template', '--force', portfolioPath]);
 
     degitProcess.stdout.on('data', (data) => {
         console.log(`Degit stdout: ${data}`);
     });
 
     degitProcess.stderr.on('data', (data) => {
-        console.error(`Degit stderr: ${data}`);
-    });
-
-    degitProcess.on('close', (code) => {
-        if (code !== 0) {
-            console.error(`Degit process exited with code ${code}`);
-        } else {
-            console.log('Degit process completed successfully');
-        }
+        console.error(`Degit : ${data}`);
     });
 
     await new Promise((resolve, reject) => {
@@ -156,6 +148,7 @@ async function downloadTemplate(userName, theme) {
             if (code !== 0) {
                 reject(new Error(`Degit process exited with code ${code}`));
             } else {
+                console.log('Degit process completed successfully');
                 resolve();
             }
         });
