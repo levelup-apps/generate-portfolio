@@ -4,7 +4,7 @@
 set -e
 
 error_handler() {
-    echo "Generate Portfolio: Error occurred in command: $1"
+    echo "Generate Portfolio Error: $1"
     exit 1
 }
 
