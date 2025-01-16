@@ -56,6 +56,17 @@ async function promptUser() {
             excludeFilter: nodePath => !nodePath.endsWith('.pdf') && !nodePath.endsWith('.txt')
         },
         {
+            type: 'fuzzypath',
+            name: 'portfolioFolder',
+            message: 'Select the folder to create the portfolio:',
+            itemType: 'directory',
+            rootPath: '.',
+            suggestOnly: false,
+            default: '.',
+            depthLimit: 5,
+            excludePath: nodePath => nodePath.startsWith('node_modules'),
+        },
+        {
             type: 'checkbox',
             name: 'sections',
             message: 'Select sections to include in your portfolio:',
@@ -82,6 +93,7 @@ async function promptUser() {
     console.log('\nReview your choices:');
     console.log('-------------------');
     console.log(`Resume File: ${answers.resumeFile}`);
+    console.log(`Portfolio Folder: ${answers.portfolioFolder}`);
     console.log('Selected Sections:');
     answers.sections.forEach((section) => console.log(`- ${section}`));
     console.log(`Theme: ${answers.theme}`);
@@ -103,7 +115,7 @@ async function promptUser() {
     return answers;
 }
 
-async function downloadTemplate(theme) {
+async function downloadTemplate(theme, portfolioFolder) {
     console.log(`Downloading ${theme} template...`);
 
     if (theme === THEMES.RETRO) {
@@ -113,7 +125,7 @@ async function downloadTemplate(theme) {
         theme = THEMES.SIMPLE;
     }
 
-    const portfolioPath = join(__dirname, `./my-portfolio`);
+    const portfolioPath = join(__dirname, portfolioFolder);
     try {
         await fs.promises.mkdir(portfolioPath, {recursive: true});
     } catch(error) {
@@ -153,7 +165,7 @@ async function main() {
         if (answers) {
             console.log('\n');
 
-            const portfolioPath = await downloadTemplate(answers.theme);
+            const portfolioPath = await downloadTemplate(answers.theme, answers.portfolioFolder);
             console.log(`\nPortfolio created at: ${portfolioPath}`);
 
             // const resumeJson = await parse(join(__dirname, answers.resumeFile));
