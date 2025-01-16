@@ -1,9 +1,11 @@
 import inquirer from 'inquirer';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import fs from 'fs/promises';
+import fs from 'fs';
 import { parse } from './resume-parser.js';
 import { generateAllMarkdowns } from './md-generator.js';
+
+import degit from 'degit';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -25,7 +27,7 @@ const THEMES = {
 
 async function validateFile(filePath) {
     try {
-        const stats = await fs.stat(filePath);
+        const stats = await fs.promises.stat(filePath);
         const lowerPath = filePath.toLowerCase();
         if (!lowerPath.endsWith('.pdf') && !lowerPath.endsWith('.txt')) {
             return 'Please provide a PDF or text file';
@@ -107,7 +109,7 @@ async function promptUser() {
     return answers;
 }
 
-async function downloadTemplate(theme) {
+async function downloadTemplate(userName, theme) {
     // Implement template downloading logic here
     // For now, we'll just log the action
     console.log(`Downloading ${theme} template...`);
@@ -121,10 +123,29 @@ async function downloadTemplate(theme) {
 
     // Here you would typically:
     // 1. Download template from a repository or local storage
-    // 2. Extract it to the project directory
-    // 3. Return the path to the extracted template
+    // 2. Degit into the portfolio directory
+    // 3. Return the path to the portfolio directory
 
-    return './templates/simple'; // Placeholder return
+    const portfolioPath = join(__dirname, `./my-portfolio`);
+    try {
+        await fs.promises.mkdir(portfolioPath, {recursive: true});
+    } catch(error) {
+        console.log(`ERROR: Failed to create folder. `, error);
+    }
+
+    const emitter = degit('https://github.com/levelup-apps/portfolio-template#HEAD', {
+        cache: true,
+        force: true,
+        verbose: true,
+    });
+
+    emitter.on('info', info => {
+        console.log(`Degit message: ${info.message}`);
+    });
+
+    await emitter.clone(portfolioPath);
+
+    return portfolioPath;
 }
 
 async function main() {
@@ -136,11 +157,11 @@ async function main() {
         if (answers) {
             console.log('\n');
 
-            const templatePath = await downloadTemplate(answers.theme);
-            console.log(`\nTemplate downloaded to: ${templatePath}`);
+            const portfolioPath = await downloadTemplate(answers.userName, answers.theme);
+            console.log(`\nPortfolio created at: ${portfolioPath}`);
 
             // const resumeJson = await parse(answers.resumeFile);
-            const resumeText = await fs.readFile(
+            const resumeText = await fs.promises.readFile(
                 'samples/liza-parsed.json',
                 'utf8'
             ); // TODO for debugging
@@ -148,7 +169,8 @@ async function main() {
             // console.log('Generated JSON object..\n', resumeJson);
 
             // TODO use user selected path here
-            generateAllMarkdowns(resumeJson, './liza-portfolio');
+            // generateAllMarkdowns(resumeJson, './liza-portfolio');
+            generateAllMarkdowns(resumeJson, portfolioPath);
             console.log('Converted to markdown.\n');
 
             console.log('\nNext steps:');
