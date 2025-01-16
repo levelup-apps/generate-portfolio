@@ -39,3 +39,6 @@ git push -uq origin main
 echo "Your portfolio is available in your GitHub profile."
 
 # https://bolt.new/~/github.com/georgeck/my-portfolio
+
+REPO_PATH=$(git remote -v | head -n1 | grep -o 'github\.com:.*\.git' | sed 's/github.com://' | sed 's/\.git$//')
+echo "Your portfolio is available at https://bolt.new/~/github.com/$REPO_PATH"
