@@ -1,5 +1,5 @@
 import inquirer from 'inquirer';
-import inquirerFuzzyPath from 'inquirer-fuzzy-path'; // P1e39
+import inquirerFuzzyPath from 'inquirer-fuzzy-path';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
