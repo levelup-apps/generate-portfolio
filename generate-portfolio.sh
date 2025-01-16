@@ -16,24 +16,22 @@ if ! command -v pnpm >/dev/null 2>&1; then
     exit 1
 fi
 
-# Create a temporary directory for the project
-TEMP_DIR=$(mktemp -d)
-cd "$TEMP_DIR" || exit 1
 
-# Initialize a new Node.js project
-#npm init -y >/dev/null 2>&1
 
 # Install required dependencies
 echo "Installing required dependencies..."
-pnpm add inquirer@^9.0.0 >/dev/null 2>&1
-pnpm add -D degit >/dev/null 2>&1
-
-# Download the generate-portfolio.js script and related files from https://github.com/levelup-apps/generate-portfolio using degit
-degit levelup-apps/generate-portfolio >/dev/null 2>&1
+pnpm i
 
 # Run the Node.js script
 node generate-portfolio.js
 
-# Cleanup
-cd - >/dev/null
-rm -rf "$TEMP_DIR"
+cd my-portfolio
+
+git init
+git add .
+git commit -mq "Initial commit"
+
+gh repo create my-portfolio --public --source .
+git push -uq origin main
+
+echo "Your portfolio is available in your GitHub profile."

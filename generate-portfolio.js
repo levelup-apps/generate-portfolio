@@ -182,11 +182,7 @@ async function main() {
             generateAllMarkdowns(resumeJson, portfolioPath);
             console.log('Converted to markdown.\n');
 
-            console.log('\nNext steps:');
-            console.log('1. Navigate to your project directory');
-            console.log('2. Customize your portfolio content');
-            console.log('3. Run `npm install` to install dependencies');
-            console.log('4. Run `npm start` to preview your portfolio');
+            console.log('Portfolio generated successfully!');
         }
     } catch (error) {
         console.error('An error occurred:', error);
