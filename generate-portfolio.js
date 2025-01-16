@@ -4,7 +4,6 @@ import { dirname, join } from 'path';
 import fs from 'fs';
 import { parse } from './resume-parser.js';
 import { generateAllMarkdowns } from './md-generator.js';
-
 import { spawn } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -122,7 +121,7 @@ async function downloadTemplate(theme) {
     });
 
     degitProcess.stderr.on('data', (data) => {
-        console.error(`> Degit err: ${data}`); // TODO why does this show a non error message
+        console.log(`> Degit: ${data}`); // this show a non error message too, nothing to do abt it
     });
 
     await new Promise((resolve, reject) => {
