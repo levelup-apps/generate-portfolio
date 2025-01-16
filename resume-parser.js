@@ -116,6 +116,7 @@ Please process step by step and validate against these requirements.
         });
 
         console.log(`INFO: Success generating JSON object using LLM: ${model.provider} ${model.modelId}`);
+        // console.log(`Resume JSON object from LLM ....\n${object}`);
 
         return object;
 
@@ -144,8 +145,8 @@ async function parse(filePath) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     (async function main() {
         try {
-            // const filePath = "./samples/liza-linkedin.pdf";
-            const filePath = "./samples/liza-linkedin.txt";
+            const filePath = "./samples/ann-linkedin.pdf";
+            // const filePath = "./samples/liza-linkedin.txt";
             const resumeJson = await parse(filePath);
             console.log(
                 "INFO: Generated JSON object..\n",

@@ -167,15 +167,18 @@ async function main() {
             console.log('\n');
 
             const portfolioPath = await downloadTemplate(answers.userName, answers.theme);
-            console.log(`\nPortfolio created at: ${portfolioPath}`);
+            console.log(`\nPortfolio template downloaded to: ${portfolioPath}`);
 
+            // console.log(`Parsing the PDF resume with AI ...`);
             // const resumeJson = await parse(answers.resumeFile);
+            // console.log('Generated resume JSON ....\n', resumeJson);
+
+            // For debugging only - or as a backup
             const resumeText = await fs.promises.readFile(
                 'samples/liza-parsed.json',
                 'utf8'
-            ); // TODO for debugging
+            );
             const resumeJson = JSON.parse(resumeText);
-            // console.log('Generated JSON object..\n', resumeJson);
 
             // TODO use user selected path here
             // generateAllMarkdowns(resumeJson, './liza-portfolio');
