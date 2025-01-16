@@ -41,8 +41,8 @@ async function promptUser() {
     const questions = [
         {
             type: 'input',
-            name: 'projectName',
-            message: 'What is your project name?',
+            name: 'userName',
+            message: 'What is your name?',
             validate: (input) => {
                 if (input.trim() === '') {
                     return 'Project name cannot be empty';
@@ -85,7 +85,7 @@ async function promptUser() {
     // Show review screen
     console.log('\nReview your choices:');
     console.log('-------------------');
-    console.log(`Project Name: ${answers.projectName}`);
+    console.log(`Name: ${answers.userName}`);
     console.log(`Resume File: ${answers.resumeFile}`);
     console.log('Selected Sections:');
     answers.sections.forEach((section) => console.log(`- ${section}`));
