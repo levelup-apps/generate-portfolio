@@ -158,7 +158,7 @@ async function main() {
             console.log('> Portfolio template downloaded.\n');
 
             // set to true to use LLM to generate. false to use static file.
-            const useLiveLLM = false;
+            const useLiveLLM = true;
 
             let resumeJson;
             if(useLiveLLM) {
