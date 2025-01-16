@@ -2,3 +2,5 @@ node_modules
 
 .env*
 my-portfolio/
+
+.DS_Store
