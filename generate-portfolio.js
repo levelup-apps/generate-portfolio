@@ -1,4 +1,5 @@
 import inquirer from 'inquirer';
+import inquirerFuzzyPath from 'inquirer-fuzzy-path'; // P1e39
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
@@ -9,6 +10,9 @@ import { spawn } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+// Register the fuzzy path prompt
+inquirer.registerPrompt('fuzzypath', inquirerFuzzyPath); // P115e
 
 const PORTFOLIO_SECTIONS = {
     SUMMARY: 'Professional summary',
@@ -41,9 +45,15 @@ async function validateFile(filePath) {
 async function promptUser() {
     const questions = [
         {
-            type: 'input',
+            type: 'fuzzypath', // Pf5f8
             name: 'resumeFile',
             message: 'Enter the path to your LinkedIn formatted resume (PDF):',
+            itemType: 'file', // Pc87f
+            rootPath: '.',
+            suggestOnly: false,
+            depthLimit: 5,
+            excludePath: nodePath => nodePath.startsWith('node_modules'),
+            excludeFilter: nodePath => !nodePath.endsWith('.pdf') && !nodePath.endsWith('.txt'),
             validate: async (input) => {
                 const result = await validateFile(input);
                 return result;
