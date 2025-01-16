@@ -1,0 +1,182 @@
+{
+    "basics": {
+        "name": "Liza George",
+        "headline": "UIUC BS+MCS in CS '25 | Microsoft SWE Intern",
+        "location": {
+            "city": "Urbana",
+            "state": "Illinois",
+            "country": "United States"
+        },
+        "contact": {
+            "email": "hi.liza.george@gmail.com",
+            "linkedInUrl": "https://www.linkedin.com/in/george-liza",
+            "socialProfiles": [
+                {
+                    "network": "LinkedIn",
+                    "url": "https://www.linkedin.com/in/george-liza"
+                },
+                {
+                    "network": "Portfolio",
+                    "url": "https://liza-george.chiramattel.com/"
+                }
+            ]
+        },
+        "summary": "I'm a graduate student pursuing a BS+MCS joint degree in Computer Science in the University of Illinois Urbana Champaign. Through university courses and projects, I have worked with Python, C, C++, Java, and Rust, and studied the fundamentals of CS through fourth-year level courses. I have also gained leadership roles in the Society of Women Engineers and the Outdoor Adventure Club, and contributed to volunteer software services through Hack4Impact. These past two summers, I was a software engineering intern at Microsoft, where I worked on the Advanced Autonomy and Applied Robotics team to build a robot teleoperation application on the Microsoft Teams platform. While on the job I learned C#/.NET, how to use WebRTC and Azure Communication Services, and ROS2. Specifically this past summer, I added LLM-based AI agents to autonomously control robots based on human readable commands. Two summers ago, I was a full-stack software engineering intern at Uber, where I was worked on the Uber For Business product. During this internship, I learned much about industry-scale software development, as well as how to work with Go, Bazel, and Cadence. I hope to deepen my computer science knowledge from experienced mentors, passionate teammates, and valuable work experiences over the next few years."
+    },
+    "education": [
+        {
+            "institution": "University of Illinois Urbana-Champaign",
+            "area": "Computer Science",
+            "studyType": "Master's degree",
+            "startDate": "2024-08-01T00:00:00Z",
+            "endDate": "2025-05-01T00:00:00Z"
+        },
+        {
+            "institution": "University of Illinois Urbana-Champaign",
+            "area": "Computer Science",
+            "studyType": "Bachelor's degree",
+            "startDate": "2021-01-01T00:00:00Z",
+            "endDate": "2024-05-01T00:00:00Z"
+        },
+        {
+            "institution": "Leigh High School",
+            "area": "High School",
+            "studyType": "High School",
+            "startDate": "2017-01-01T00:00:00Z",
+            "endDate": "2021-01-01T00:00:00Z"
+        },
+        {
+            "institution": "Stanford Summer Session",
+            "area": "Computer Science",
+            "studyType": "High School Summer College",
+            "startDate": "2020-06-01T00:00:00Z",
+            "endDate": "2020-08-01T00:00:00Z"
+        }
+    ],
+    "work": [
+        {
+            "company": "University of Illinois Urbana-Champaign",
+            "positions": [
+                {
+                    "title": "Teaching Assistant",
+                    "startDate": "2024-08-01T00:00:00Z",
+                    "endDate": "2025-01-15T00:00:00Z",
+                    "location": "Urbana-Champaign Area",
+                    "description": "As a TA for CS222 (Software Development Fundamentals), I help plan and administer the course, provide technical support, and present lectures. I also aid in managing the CA team, which includes facilitating all-staff meetings and making hiring decisions. I gather feedback regularly from students and other course staff to improve the course every semester."
+                },
+                {
+                    "title": "Research Intern",
+                    "startDate": "2023-01-01T00:00:00Z",
+                    "endDate": "2025-01-15T00:00:00Z",
+                    "description": "I am a part of the lab of Professor Kaiyu Guan, who is the Director of the Agroecosystem Sustainability Center and is affiliated with the National Center for Supercomputing Applications. In our research, we utilize satellite data, computational models, and machine learning techniques to develop more productive and sustainable crop practices. Last spring, I developed an online portal for local farmers, enabling them to access their own crop data and analyze soil moisture data over time. To create this portal, I used Next.JS, Google APIs for integrated maps and plots, and hosted the data on MongoDB. This semester, I am collaborating with Assistant Professor Bin Peng, two Colombian social scientists, and the NASA LCLUC project to map rural croplands in Colombia.",
+                    "technologies": "Next.JS, Google APIs, MongoDB"
+                },
+                {
+                    "title": "Course Assistant",
+                    "startDate": "2022-01-01T00:00:00Z",
+                    "endDate": "2024-05-01T00:00:00Z",
+                    "location": "Urbana-Champaign Area",
+                    "description": "As a lead course assistant, I help plan and administer the course, provide technical support, present lectures, and teach during office hours. I also lead the rest of the CA team, which includes facilitating all-staff meetings and making hiring decisions."
+                }
+            ],
+            "startDate": "2022-01-01T00:00:00Z",
+            "endDate": "2025-01-15T00:00:00Z"
+        },
+        {
+            "company": "Microsoft",
+            "positions": [
+                {
+                    "title": "Software Engineer Intern",
+                    "startDate": "2024-05-01T00:00:00Z",
+                    "endDate": "2024-08-01T00:00:00Z",
+                    "location": "Redmond, Washington, United States",
+                    "team": "Advanced Autonomy and Applied Robotics",
+                    "description": "I returned to working with the Advanced Autonomy and Applied Robotics team, part of the Strategic Missions and Technology (SMT) OCTO group, which focuses on human-machine-AI teaming. During my internship, I developed Agents4Robots, a framework to build AI agents that control specific robot's movements using advanced LLMs and developer-provided tools.",
+                    "technologies": "Semantic Kernel, Python, JavaScript, ROS2, Azure Communication Services SDK"
+                },
+                {
+                    "title": "Software Engineer Intern",
+                    "startDate": "2023-05-01T00:00:00Z",
+                    "endDate": "2023-08-01T00:00:00Z",
+                    "location": "Redmond, Washington, United States",
+                    "team": "Advanced Autonomy and Applied Robotics",
+                    "description": "I worked with the Advanced Autonomy and Applied Robotics team in the Strategic Missions and Technology division. I developed an application on the Microsoft Teams Plugin platform, enabling users to remotely operate robots.",
+                    "technologies": "C#/.NET, WebRTC, Azure Communication Services, ROS2"
+                }
+            ],
+            "startDate": "2023-05-01T00:00:00Z",
+            "endDate": "2024-08-01T00:00:00Z"
+        },
+        {
+            "company": "Hack4Impact",
+            "positions": [
+                {
+                    "title": "Software Developer",
+                    "startDate": "2022-09-01T00:00:00Z",
+                    "endDate": "2023-08-01T00:00:00Z",
+                    "description": "Hack4Impact is a student club that develops free websites and apps for non-profit organizations.",
+                    "technologies": "T3 stack, React, Nest.js, Firebase"
+                }
+            ],
+            "startDate": "2022-09-01T00:00:00Z",
+            "endDate": "2023-08-01T00:00:00Z"
+        },
+        {
+            "company": "Uber",
+            "positions": [
+                {
+                    "title": "SWE Intern",
+                    "startDate": "2022-05-01T00:00:00Z",
+                    "endDate": "2022-08-01T00:00:00Z",
+                    "team": "Enterprise Billing",
+                    "description": "Interned with Uber's Enterprise Billing team, which helps manage B2B transactions with Uber's partners (Walmart, Apple, Drizly, etc.). My project was a series of API endpoints serialized into the Google Protobuf format to query and sort through all billing invoices.",
+                    "technologies": "React, GraphQL, Google Protobuf"
+                }
+            ],
+            "startDate": "2022-05-01T00:00:00Z",
+            "endDate": "2022-08-01T00:00:00Z"
+        },
+        {
+            "company": "Project Code Future Inc.",
+            "positions": [
+                {
+                    "title": "Frontend Web Developer",
+                    "startDate": "2021-07-01T00:00:00Z",
+                    "endDate": "2022-01-01T00:00:00Z",
+                    "location": "Urbana-Champaign Area",
+                    "description": "Project Code Future organizes coding lessons for younger students in our area. I am a part of the team building the website where students can find and sign up for nearby classes, and tutors can start new branches.",
+                    "technologies": "Vue, Vuelidate"
+                }
+            ],
+            "startDate": "2021-07-01T00:00:00Z",
+            "endDate": "2022-01-01T00:00:00Z"
+        },
+        {
+            "company": "Google",
+            "positions": [
+                {
+                    "title": "Google Computer Science Summer Institute Scholar",
+                    "startDate": "2021-07-01T00:00:00Z",
+                    "endDate": "2021-08-01T00:00:00Z",
+                    "description": "Google's Computer Science Summer Institute (CSSI) Program is a selective 4-week bootcamp for rising college freshman interested in computer science.",
+                    "technologies": "p5.js, Javascript"
+                }
+            ],
+            "startDate": "2021-07-01T00:00:00Z",
+            "endDate": "2021-08-01T00:00:00Z"
+        },
+        {
+            "company": "STEM Enrichment Youth",
+            "positions": [
+                {
+                    "title": "Coding, Set Theory, and Physics Instructor",
+                    "startDate": "2020-06-01T00:00:00Z",
+                    "endDate": "2021-07-01T00:00:00Z",
+                    "description": "As a volunteer instructor at STEMEY, I taught several middle- and high-school age students different topics in Competitive Programming, Physics, Introduction to Coding, Set Theory, and Introduction to Web Design."
+                }
+            ],
+            "startDate": "2020-06-01T00:00:00Z",
+            "endDate": "2021-07-01T00:00:00Z"
+        }
+    ]
+}

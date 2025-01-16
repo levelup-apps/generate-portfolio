@@ -1,0 +1,65 @@
+{
+    "basics": {
+        "name": "Abc Woodworth",
+        "headline": "SLU BS in CS '25 | Acme SWE Intern",
+        "location": {
+            "city": "Hammond",
+            "state": "LA",
+            "country": "United States"
+        },
+        "contact": {
+            "email": "abc.def@example.com",
+            "linkedInUrl": "https://www.linkedin.com/in/abc-woodworth",
+            "socialProfiles": [
+                { "network": "Portfolio", "url": "https://abc.example.com/" }
+            ]
+        },
+        "summary": "Project management and consulting experience primarily focused upon nonprofit projects, requiring quick turnarounds and extensive troubleshooting. Proven skills in planning, strategy development, and knowledge of customer and client business processes. Excellent team-building and management skills with demonstrated success"
+    },
+    "education": [
+        {
+            "institution": "Southeastern Louisiana University (SLU)",
+            "area": "Computer Science",
+            "studyType": "Bachelor of Science",
+            "startDate": "2021-05-01T00:00:00Z"
+        }
+    ],
+    "work": [
+        {
+            "company": "SLU Computer Science Department",
+            "positions": [
+                {
+                    "title": "Blog Writer",
+                    "startDate": "2020-08-01T00:00:00Z",
+                    "endDate": "2025-01-15T00:00:00Z",
+                    "location": "Hammond, LA",
+                    "description": "Designed a student portal website that allows access to blogs, research articles, and inter-office communication. Wrote and published 5+ blog posts highlighting current industry trends, meeting monthly deadlines. Interviewed faculty, staff, and employers ambitiously to generate content for blog posts and other relevant articles"
+                }
+            ]
+        },
+        {
+            "company": "Financial Network Services, Pty Ltd.",
+            "positions": [
+                {
+                    "title": "Unix Administrator Assistant",
+                    "startDate": "2019-06-01T00:00:00Z",
+                    "endDate": "2019-08-01T00:00:00Z",
+                    "location": "Sydney, Australia",
+                    "description": "Operated Unix Hp/Ux 11i in the transferring of files between development and testing regions. Led team of 4 to configure notebooks and install multilingual software for 6 overseas consultants. Created user accounts and set permissions and passwords with UNIX - SCO"
+                }
+            ]
+        },
+        {
+            "company": "Tangi Humane Society",
+            "positions": [
+                {
+                    "title": "Web Programming Class",
+                    "startDate": "2020-01-01T00:00:00Z",
+                    "endDate": "2020-06-01T00:00:00Z",
+                    "location": "Hammond, LA",
+                    "description": "Served as a project team leader and developed a database to track the adoption of animals proficiently. Used Visual Basic to effectively establish a new user interface that improved user experience significantly. Incorporated Java, HTML, and Flash to create an interactive website"
+                }
+            ]
+        }
+    ]
+}

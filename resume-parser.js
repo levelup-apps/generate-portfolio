@@ -35,7 +35,7 @@ You are an expert resume parser focused on accurately extracting structured data
 3. Format dates according to ISO 8601 (YYYY-MM-DD) specification
 4. Convert relative dates like "current" or "present" to today's date (2025-01-15)
 5. Validate the output against the provided JSON schema
-6. Flag any missing required fields or validation issues
+6. DO NOT shorten any content or generate new summaries. Use the full text as is from the resume. 
 7. For any optional fields that are not present in the source text, omit them entirely from the output JSON rather than using null values
 8. Pay special attention to date fields - if a date is not known, the field should be omitted entirely from the output rather than being set to null
 9. For work experience entries, ensure each company has at least one position entry with required fields
@@ -141,10 +141,13 @@ async function parse(filePath) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     (async function main() {
         try {
-            // const filePath = "./resume-sample.pdf";
-            const filePath = "./resume-sample.txt";
+            // const filePath = "./samples/liza-linkedin.pdf";
+            const filePath = "./samples/liza-linkedin.txt";
             const resumeJson = await parse(filePath);
-            console.log("INFO: Generated JSON object..\n", resumeJson);
+            console.log(
+                "INFO: Generated JSON object..\n",
+                JSON.stringify(resumeJson)
+            );
         } catch (error) {
             console.error("Error in main:", error);
             process.exit(1);

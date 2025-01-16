@@ -43,7 +43,7 @@ TECHNICAL SKILLS
 ▪ Database: SQL Server, Microsoft (MS) Access, Oracle
 ▪ Software: JCL, SQL, DB2, MS Visio, MS Excel, MS FrontPage, MS Word
 
-RELATED EXPERIENCE
+PROJECT EXPERIENCE
 Blog Writer, SLU Computer Science Department 
 Hammond, LA, August 2020 – Present
 ▪ Designed a student portal website that allows access to blogs, research articles, and inter-office communication
@@ -57,7 +57,6 @@ June – August 2019
 ▪ Led team of 4 to configure notebooks and install multilingual software for 6 overseas consultants
 ▪ Created user accounts and set permissions and passwords with UNIX - SCO
 
-PROJECT EXPERIENCE
 Tangi Humane Society Web Programming Class 
 Hammond, LA, January 2020 – June 2020
 ▪ Served as a project team leader and developed a database to track the adoption of animals proficiently

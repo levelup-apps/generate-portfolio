@@ -1,0 +1,259 @@
+hi.liza.george@gmail.com
+
+Liza George
+
+www.linkedin.com/in/george-liza
+(LinkedIn)
+liza-george.chiramattel.com/
+(Portfolio)
+
+Summary
+
+Contact
+
+Top Skills
+Team Management
+University Teaching
+Semantic Kernel
+
+Honors-Awards
+AdaHacks III - First Place in Social
+Justice Division
+Flex Factor Finalist
+
+UIUC BS+MCS in CS '25 | Microsoft SWE Intern
+Urbana, Illinois, United States
+
+I'm a graduate student pursuing a BS+MCS joint degree in Computer
+Science in the University of Illinois Urbana Champaign. Through
+university courses and projects, I have worked with Python, C, C
+++, Java, and Rust, and studied the fundamentals of CS through
+fourth-year level courses. I have also gained leadership roles in the
+Society of Women Engineers and the Outdoor Adventure Club, and
+contributed to volunteer software services through Hack4Impact.
+These past two summers, I was a software engineering intern at
+Microsoft, where I worked on the Advanced Autonomy and Applied
+Robotics team to build a robot teleoperation application on the
+Microsoft Teams platform. While on the job I learned C#/.NET, how
+to use WebRTC and Azure Communication Services, and ROS2.
+Specifically this past summer, I added LLM-based AI agents to
+autonomously control robots based on human readable commands.
+Two summers ago, I was a full-stack software engineering intern
+at Uber, where I was worked on the Uber For Business product.
+During this internship, I learned much about industry-scale software
+development, as well as how to work with Go, Bazel, and Cadence.
+I hope to deepen my computer science knowledge from experienced
+mentors, passionate teammates, and valuable work experiences
+over the next few years.
+
+Experience
+University of Illinois Urbana-Champaign
+3 years 1 month
+
+Teaching Assistant
+
+August 2024 - Present (6 months)
+Urbana-Champaign Area
+
+Page 1 of 6
+
+As a TA for CS222 (Software Development Fundamentals), I help plan and
+administer the course, provide technical support, and present lectures. I also
+aid in managing the CA team, which includes facilitating all-staff meetings and
+making hiring decisions. I gather feedback regularly from students and other
+course staff to improve the course every semester.
+
+Research Intern
+
+January 2023 - Present (2 years 1 month)
+I am a part of the lab of Professor Kaiyu Guan, who is the Director of the
+Agroecosystem Sustainability Center and is affiliated with the National Center
+for Supercomputing Applications. In our research, we utilize satellite data,
+computational models, and machine learning techniques to develop more
+productive and sustainable crop practices.
+Last spring, I developed an online portal for local farmers, enabling them to
+access their own crop data and analyze soil moisture data over time. To create
+this portal, I used Next.JS, Google APIs for integrated maps and plots, and
+hosted the data on MongoDB.
+This semester, I am collaborating with Assistant Professor Bin Peng, two
+Colombian social scientists, and the NASA LCLUC project to map rural
+croplands in Colombia.”
+
+Course Assistant
+
+January 2022 - May 2024 (2 years 5 months)
+Urbana-Champaign Area
+As a lead course assistant, I help plan and administer the course, provide
+technical support, present lectures, and teach during office hours. I also lead
+the rest of the CA team, which includes facilitating all-staff meetings and
+making hiring decisions.
+Spring ‘23, Fall '23 - CS222 (Software Development Fundamentals) Head CA;
+I help plan lectures and improve the resources available to students. I am
+also responsible for coordinating meetings with and aid in hiring the rest of the
+course staff. I also gather feedback regularly from students and other course
+staff to improve the course structure.
+Fall ‘22 - CS222 (Software Development Fundamentals) Project Mentor;
+managed two student teams as they work on semester-long projects. My
+responsibilities included teaching them project planning, best practices in
+software development, and helping them through technical challenges.
+Spring ‘22 semester- CS128H (Introduction to Computer Science II Honors)
+CA; used the Angular framework to maintain and add features to the course
+Page 2 of 6
+
+website. Additionally, mentored two student teams working on their final
+projects in Rust.
+
+Microsoft
+Software Engineer Intern
+
+May 2024 - August 2024 (4 months)
+Redmond, Washington, United States
+I returned to working with the Advanced Autonomy and Applied Robotics team,
+part of the Strategic Missions and Technology (SMT) OCTO group, which
+focuses on human-machine-AI teaming.
+During my internship, I developed Agents4Robots, a framework to build
+AI agents that control specific robot’s movements using advanced LLMs
+and developer-provided tools. I implemented the framework for the Boston
+Dynamics SPOT and turtlesim. Finally, I integrated it into SMT OCTO’s
+Mission Robotics Platform, allowing users to issue high-level, natural language
+commands to robot agents via a chatbot interface. Commands are transmitted
+over the Azure Communication Services network.
+This experience expanded my software development skills significantly. I was
+given autonomy to independently plan, design, and execute the project to
+achieve an exploratory goal. When integrating with MRP, I collaborated with a
+larger software development team, learning about the architecture and design
+necessary to turn proof of concepts into scalable products.
+Key Technologies & Tools:
+- AI Framework: Semantic Kernel
+- Languages: Python (99% test coverage), JS
+- Robot Control: ROS2 (through Python and Node.js libraries)
+- Networking: Azure Communication Services SDK
+I continuously sought feedback on my code quality and worked with software
+development best practices. During my final presentation, I received
+recognition for the flexibility and future potential of Agents4Robots
+
+Microsoft
+Software Engineer Intern
+
+May 2023 - August 2023 (4 months)
+Redmond, Washington, United States
+Page 3 of 6
+
+I worked with the Advanced Autonomy and Applied Robotics team in the
+Strategic Missions and Technology division. The team focused on exploring
+robotics applications and creating proof-of-concept projects for Microsoft’s
+government mission users.
+I developed an application on the Microsoft Teams Plugin platform, enabling
+users to remotely operate robots. Teleoperation commands were conveyed
+via WebRTC, while robot video streams utilized the Azure Communication
+Services Call SDK. I designed and built a user interface that allowed multiple
+users to collaboratively control several robots simultaneously.
+I collaborated on this project with another intern, working closely and learning
+together. The team had previously built a POC of this idea, so the intern
+project was built from the ground up - with guidance from our manager, we
+made design decisions, started the repository, and progressed with a great
+degree of independence. We presented the final product at a team all-hands,
+and I received praise on my presentation skills, the application performance,
+and planning process.
+Throughout my internship, I acquired essential networking concepts to work
+with WebRTC and ACS, learned to use ROS2 for robot communication, and
+honed my skills in C#/.NET to build upon previous versions of the application.
+I also refined my group brainstorming and project planning skills. I consistently
+received positive feedback on my code quality and thoroughness as an
+engineer, holding myself and the project to a high standard.
+
+Hack4Impact
+Software Developer
+
+September 2022 - August 2023 (1 year)
+Hack4Impact is a student club that develops free websites and apps for nonprofit organizations.
+Recently, my team and I collaborated with the Students for Environmental
+Concerns organization on campus to build a website outlining their argument
+for fossil fuel divestment. The website was built using the T3 stack, and
+included a database interface where users can explore the university’s
+investment portfolio and carbon impact of each of its investments. I also
+developed an additional page featuring SEC's open letter and a petition form
+for students to sign, requesting university divestment.
+
+Page 4 of 6
+
+During the Fall ‘22 semester, my team worked with KadaKareer, a Filipino
+organization that aids underserved students in exploring career options,
+gaining work experience and finding mentors. We developed a web-based
+platform using React and Nest.js hosting their apprenticeship program. I was
+responsible for implementing our platform dashboard designs and creating
+a reusable form component. Additionally, I established connections to our
+Firebase database through Nest.js endpoints.
+
+Uber
+SWE Intern
+
+May 2022 - August 2022 (4 months)
+Interned with Uber’s Enterprise Billing team, which helps manage B2B
+transactions with Uber’s partners (Walmart, Apple, Drizly, etc.). My project was
+a series of API endpoints serialized into the Google Protobuf format to query
+and sort through all billing invoices. Collaborated with another intern to connect
+these endpoints to a real-time analytics database. Also built matching UI that
+consumes this API using React and GraphQL.
+Additionally, I experienced agile development in a team, helped with our
+support channel, and added to the product documentation. Under the guidance
+of my mentor, I learned how software development works on a large scale,
+how to create secure and reliable products, and how to work in a professional
+team.
+
+Project Code Future Inc.
+Frontend Web Developer
+
+July 2021 - January 2022 (7 months)
+Urbana-Champaign Area
+Project Code Future organizes coding lessons for younger students in our
+area. I am a part of the team building the website where students can find and
+sign up for nearby classes, and tutors can start new branches.
+I learned how to use the Vue frontend framework on the job to create the
+website for the nonprofit organization. I built the website's first page, and also
+used Vuelidate to add form validation to the whole site. Additionally, I had the
+chance to collaborate with a development team and learn how to work in the
+software development cycle using Git Issues.
+
+Google
+Google Computer Science Summer Institute Scholar
+Page 5 of 6
+
+July 2021 - August 2021 (2 months)
+Remote
+A full explanation of my time in CSSI and my capstone project can be viewed
+here - https://bit.ly/my-time-in-google-cssi
+Google's Computer Science Summer Institute (CSSI) Program is a selective
+4-week bootcamp for rising college freshman interested in computer science.
+During the program, I learned from Google's volunteer instructors and
+engineers, and used the p5.js library to build my knowledge of Javascript.
+I also attended the program's workshops to learn more about Google's
+engineering programs and how to be a successful teammate and engineer.
+The program ended with a capstone project that I built and presented with my
+partner, where I used the p5.js library to replicate the arcade game Centipede.
+
+STEM Enrichment Youth
+Coding, Set Theory, and Physics Instructor
+June 2020 - July 2021 (1 year 2 months)
+
+As a volunteer instructor at STEMEY, I taught several middle- and highschool age students different topics in Competitive Programming, Physics,
+Introduction to Coding, Set Theory, and Introduction to Web Design. I taught
+larger classes with fellow volunteers, co-lead smaller asynchronous classes,
+and provided one-on-one tutoring. Teaching all of these subjects was a
+wonderful opportunity for me to gain a better understanding of each of them,
+and to introduce others to these fields that interest me so much.
+
+Education
+University of Illinois Urbana-Champaign
+Master's degree, Computer Science · (August 2024 - May 2025)
+
+University of Illinois Urbana-Champaign
+Bachelor's degree, Computer Science · (2021 - May 2024)
+
+Leigh High School
+High School, High School ·  (2017 - 2021)
+
+Stanford Summer Session
+High School Summer College , Computer Science · (June 2020 - August 2020)
+
+Page 6 of 6
