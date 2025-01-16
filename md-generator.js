@@ -98,10 +98,10 @@ function generateContactMarkdown(contactData) {
     return markdown;
 }
 
-function generateWorkMarkdown(workData) {
+function generateExperienceMarkdown(experienceData) {
     let markdown = '# Experience\n\n';
 
-    workData.forEach((company) => {
+    experienceData.forEach((company) => {
         markdown += `## ${company.company}\n\n`;
 
         // Handle single position case
@@ -177,9 +177,9 @@ function generateAllMarkdowns(resumeJson, portfolioRepoPath) {
             );
         }
     }
-    if (resumeJson.work) {
-        const workMarkdown = generateWorkMarkdown(resumeJson.work);
-        fs.writeFileSync(path.join(content_folder, 'work.md'), workMarkdown);
+    if (resumeJson.experience) {
+        const experienceMarkdown = generateExperienceMarkdown(resumeJson.experience);
+        fs.writeFileSync(path.join(content_folder, 'experience.md'), experienceMarkdown);
     }
     // TODO repeat for other sections
 }

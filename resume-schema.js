@@ -49,7 +49,7 @@ const educationSchema = z.array(
     })
 );
 
-// Work experience schema
+// Work Experience schema
 const positionSchema = z.object({
     title: z.string().nullish(),
     startDate: z.string().datetime().optional(),
@@ -60,7 +60,7 @@ const positionSchema = z.object({
     technologies: z.string().nullish().optional(),
 });
 
-const workSchema = z.array(
+const experienceSchema = z.array(
     z.object({
         company: z.string(),
         totalDuration: z.string().optional(),
@@ -78,5 +78,5 @@ const workSchema = z.array(
 export const resumeSchema = z.object({
     basics: basicsSchema.optional(),
     education: educationSchema.optional(),
-    work: workSchema.optional(),
+    experience: experienceSchema.optional(),
 });

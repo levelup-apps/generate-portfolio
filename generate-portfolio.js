@@ -2,7 +2,8 @@ import inquirer from 'inquirer';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
-import { parse } from './resume-parser.js';
+import path from 'path';
+import { parseResume } from './resume-parser.js';
 import { generateAllMarkdowns } from './md-generator.js';
 
 import { spawn } from 'child_process';
@@ -169,23 +170,31 @@ async function main() {
             const portfolioPath = await downloadTemplate(answers.userName, answers.theme);
             console.log(`\nPortfolio template downloaded to: ${portfolioPath}`);
 
-            // console.log(`Parsing the PDF resume with AI ...`);
-            // const resumeJson = await parse(answers.resumeFile);
-            // console.log('Generated resume JSON ....\n', resumeJson);
+            // set to true to use LLM to generate. false to use static file.
+            const useLiveLLM = false;
 
-            // For debugging only - or as a backup
-            const resumeText = await fs.promises.readFile(
-                'samples/liza-parsed.json',
-                'utf8'
-            );
-            const resumeJson = JSON.parse(resumeText);
+            let resumeJson;
+            if(useLiveLLM) {
+                console.log(`Parsing the PDF resume with AI ...`);
+                resumeJson = await parseResume(answers.resumeFile);
+                console.log('Generated resume JSON ....\n', resumeJson);
 
-            // TODO use user selected path here
-            // generateAllMarkdowns(resumeJson, './liza-portfolio');
+                // write the resumeJson to the content folder
+                fs.writeFileSync(path.join(portfolioPath, 'content', 'resume-data.json'), JSON.stringify(resumeJson));
+
+            } else {
+                // For debugging only - or as a backup
+                const resumeText = await fs.promises.readFile(
+                    'samples/liza-parsed.json',
+                    'utf8'
+                );
+                resumeJson = JSON.parse(resumeText);
+            }
+
             generateAllMarkdowns(resumeJson, portfolioPath);
             console.log('Converted to markdown.\n');
 
-            console.log('Portfolio generated successfully!');
+            console.log(`Portfolio site generated successfully! See preview in ${portfolioPath}.`);
         }
     } catch (error) {
         console.error('An error occurred:', error);

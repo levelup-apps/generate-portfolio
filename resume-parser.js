@@ -66,8 +66,8 @@ Date handling for education and work experience:
 - If date is unknown: omit the field entirely, do not use null
 - For current positions: use "endDate": "2025-01-15T00:00:00Z"
 
-Work experience specific requirements:
-1. Each work entry must have a company name and at least one position
+Work Experience specific requirements:
+1. Each experience entry must have a company name and at least one position
 2. For positions array:
    - Each position must have a title
    - Include startDate if known, omit if unknown
@@ -76,9 +76,9 @@ Work experience specific requirements:
 3. Technologies object should only be included if specific technologies are mentioned
 4. Duration fields should be omitted if not explicitly stated
 
-Example structure for work experience:
+Example structure for wErk Experience:
 {
-  "work": [
+  "experience": [
     {
       "company": "Company Name",
       "positions": [
@@ -126,7 +126,7 @@ Please process step by step and validate against these requirements.
     }
 }
 
-async function parse(filePath) {
+async function parseResume(filePath) {
     
     if(!filePath) {
         console.log(`ERROR: Resume file not specified. Cannot parse the resume.`);
@@ -147,7 +147,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         try {
             const filePath = "./samples/ann-linkedin.pdf";
             // const filePath = "./samples/liza-linkedin.txt";
-            const resumeJson = await parse(filePath);
+            const resumeJson = await parseResume(filePath);
             console.log(
                 "INFO: Generated JSON object..\n",
                 JSON.stringify(resumeJson)
@@ -159,4 +159,4 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     })();
 }
 
-export { parse };
+export { parseResume };

@@ -1,0 +1,168 @@
+{
+    "basics": {
+        "name": "Ann Catherine Jose",
+        "headline": "Hands-On Tech Enthusiast. Software Builder. Full-Stack Developer. Lifelong Learner. Loves tech, math and music.",
+        "location": {
+            "city": "San Jose",
+            "state": "California",
+            "country": "United States"
+        },
+        "contact": {
+            "email": "ann.jose@gmail.com",
+            "linkedInUrl": "https://www.linkedin.com/in/annjose",
+            "socialProfiles": [
+                {
+                    "network": "LinkedIn",
+                    "url": "https://www.linkedin.com/in/annjose"
+                },
+                { "network": "Personal", "url": "https://annjose.com" }
+            ]
+        },
+        "summary": "I am an Engineering Leader with over 20 years of experience in the software industry. I'm passionate about using state-of-the-art technology to build products that truly delight our customers and staying up-to-date with the latest industry trends.\n\nAs the Head of Engineering for the QuickBooks Platform and Mobile Organization at Intuit, I have the privilege of leading a talented team of engineers. We create financial software that helps millions of small businesses and self-employed customers to run their business. In my role, I am responsible for driving the strategy and overseeing the development of the QuickBooks mobile applications and the platform infrastructure that hosts the QuickBooks Online application.  I work closely with Product, Design and Marketing leaders to deliver best-in-class solutions across QuickBooks ecosystem.  \n\nPersonally, I enjoy solving difficult problems, learning something new every day, and using that knowledge to build something valuable. Back when I was an individual contributor for 15 years, I used to enjoy solving difficult problems, discovering the cause of a challenging bug, finding a solution to a difficult problem, or creating a scalable architecture and implementing it alongside my team.\n\nMy passion for engineering runs deep and I always approach challenges with an engineer's mindset. That's why, as an engineering leader, I aim to foster the kind of environment that I would have wanted as an engineer. I prioritize empathy, empowerment, and accountability in my leadership style. Technical expertise and strong communication skills are essential for leaders, and I hold my team to the same standard. I prioritize developing these skills in myself and my team to build a high performing organization.\n\nAs a leader, I prioritize both building the right product and building it right. I firmly believe in empowering the teams closest to the work to make decisions and take ownership of their outcomes. These principles are central to my approach to delivering top-notch solutions and cultivating high-performing teams that are passionate about technology and have the autonomy to achieve success for our customers.\n\nI strongly believe in the saying, \"Be the Change You Want to See.\" Every day, I challenge myself to make progress and strive for excellence. I find that stepping out of my comfort zone and learning new things is the best way to grow both personally and professionally. While it can be a challenging journey, I am committed to do it and to help others along the way."
+    },
+    "education": [
+        {
+            "institution": "Indian Institute of Technology, Madras",
+            "area": "Mathematics",
+            "studyType": "Master of Science (M.S.)",
+            "startDate": "1998-01-01T00:00:00Z",
+            "endDate": "2000-01-01T00:00:00Z"
+        },
+        {
+            "institution": "Mahatma Gandhi University",
+            "area": "Mathematics",
+            "studyType": "Bachelor of Science",
+            "startDate": "1995-01-01T00:00:00Z",
+            "endDate": "1998-01-01T00:00:00Z"
+        }
+    ],
+    "experience": [
+        {
+            "company": "Self-employed",
+            "totalDuration": "6 months",
+            "positions": [
+                {
+                    "title": "Software Developer",
+                    "startDate": "2024-08-01T00:00:00Z",
+                    "endDate": "2025-01-15T00:00:00Z",
+                    "location": "San Francisco Bay Area",
+                    "description": "I am a self-employed software developer, focusing on learning, coding and building tech solutions to real-life problems. I contribute to open source, build apps and websites for me, my friends and family. I support my community, mentor others in career and time management, and reignite my passion for math and music."
+                }
+            ],
+            "position": "Software Developer",
+            "startDate": "2024-08-01T00:00:00Z",
+            "endDate": "2025-01-15T00:00:00Z",
+            "location": "San Francisco Bay Area",
+            "duration": "6 months",
+            "description": "I am a self-employed software developer, focusing on learning, coding and building tech solutions to real-life problems. I contribute to open source, build apps and websites for me, my friends and family. I support my community, mentor others in career and time management, and reignite my passion for math and music."
+        },
+        {
+            "company": "Intuit",
+            "totalDuration": "14 years 1 month",
+            "positions": [
+                {
+                    "title": "Director Of Engineering",
+                    "startDate": "2020-02-01T00:00:00Z",
+                    "endDate": "2024-08-01T00:00:00Z",
+                    "location": "San Francisco Bay Area",
+                    "description": "I'm the Director of Engineering at Intuit, leading the QuickBooks Platform and Mobile Engineering organization in the Small Business Group. My focus is on the core platform of QBO, Search and QB mobile apps, catering to millions of small business and self-employed customers. I also spearhead the company-wide Generative AI initiative for QuickBooks products on web and mobile."
+                },
+                {
+                    "title": "Principal Software Engineer",
+                    "startDate": "2015-08-01T00:00:00Z",
+                    "endDate": "2020-02-01T00:00:00Z",
+                    "location": "San Francisco Bay Area",
+                    "description": "Technical lead for the QuickBooks mobile team building Intuit's flagship mobile apps QuickBooks for small business and QuickBooks for Self-Employed. Led multiple initiatives including architecture unification to MVVM/RxSwift, data layer implementation using Apollo/GraphQL, Swift adoption and automated testing improvements."
+                },
+                {
+                    "title": "Staff Software Engineer",
+                    "startDate": "2012-11-01T00:00:00Z",
+                    "endDate": "2015-07-01T00:00:00Z",
+                    "location": "San Francisco Bay Area",
+                    "description": "Built the TurboTax app for iPhone and iPad. Core contributor in rebuilding the app in less than 6 months."
+                },
+                {
+                    "title": "Staff Software Engineer",
+                    "startDate": "2010-08-01T00:00:00Z",
+                    "endDate": "2012-10-01T00:00:00Z",
+                    "location": "Bangalore, India",
+                    "description": "Senior developer in the TurboTax desktop team, building TurboTax Business. Led the integration of TurboTax with QuickBooks."
+                }
+            ],
+            "position": "Director Of Engineering",
+            "startDate": "2010-08-01T00:00:00Z",
+            "endDate": "2024-08-01T00:00:00Z",
+            "location": "San Francisco Bay Area",
+            "duration": "14 years 1 month",
+            "description": "Multiple roles with increasing responsibility from Staff Software Engineer to Director of Engineering"
+        },
+        {
+            "company": "Philips Healthcare",
+            "totalDuration": "4 years 8 months",
+            "positions": [
+                {
+                    "title": "Software Architect",
+                    "startDate": "2010-03-01T00:00:00Z",
+                    "endDate": "2010-08-01T00:00:00Z",
+                    "location": "Bangalore, INDIA",
+                    "description": "Tech Lead for the team in Ultrasound Business Unit, working on new product offerings"
+                },
+                {
+                    "title": "Senior Technical Specialist",
+                    "startDate": "2008-04-01T00:00:00Z",
+                    "endDate": "2010-03-01T00:00:00Z",
+                    "location": "Bangalore, INDIA",
+                    "description": "Technical Lead for the Q-Station 1.0 project, developing offline workstation with connected workflow for Cardiac Ultrasound market"
+                },
+                {
+                    "title": "Technical Specialist",
+                    "startDate": "2006-01-01T00:00:00Z",
+                    "endDate": "2008-03-01T00:00:00Z",
+                    "location": "Bangalore, INDIA",
+                    "description": "Worked on Pathfinder & Morpheus projects, designing and implementing key product features"
+                }
+            ],
+            "position": "Software Architect",
+            "startDate": "2006-01-01T00:00:00Z",
+            "endDate": "2010-08-01T00:00:00Z",
+            "location": "Bangalore, INDIA",
+            "duration": "4 years 8 months",
+            "description": "Multiple roles in Ultrasound Business Unit"
+        },
+        {
+            "company": "SAP Labs India",
+            "totalDuration": "1 year 8 months",
+            "positions": [
+                {
+                    "title": "Development Lead",
+                    "startDate": "2004-05-01T00:00:00Z",
+                    "endDate": "2005-12-01T00:00:00Z",
+                    "description": "Worked as Individual Contributor and Development Lead for xRPM project, designing and developing Java WebDynpro applications"
+                }
+            ],
+            "position": "Development Lead",
+            "startDate": "2004-05-01T00:00:00Z",
+            "endDate": "2005-12-01T00:00:00Z",
+            "location": "India",
+            "duration": "1 year 8 months",
+            "description": "Worked as Individual Contributor and Development Lead for xRPM project, designing and developing Java WebDynpro applications"
+        },
+        {
+            "company": "Tata Infotech",
+            "totalDuration": "3 years 5 months",
+            "positions": [
+                {
+                    "title": "Senior Software Engineer",
+                    "startDate": "2000-07-01T00:00:00Z",
+                    "endDate": "2003-11-01T00:00:00Z",
+                    "description": "Individual Contributor in the WBOL (World Book Online) project to develop the online version of World Book encyclopedia"
+                }
+            ],
+            "position": "Senior Software Engineer",
+            "startDate": "2000-07-01T00:00:00Z",
+            "endDate": "2003-11-01T00:00:00Z",
+            "duration": "3 years 5 months",
+            "description": "Individual Contributor in the WBOL (World Book Online) project to develop the online version of World Book encyclopedia"
+        }
+    ]
+}
