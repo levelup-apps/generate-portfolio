@@ -4,7 +4,6 @@ import { dirname, join } from 'path';
 import fs from 'fs/promises';
 import { parse } from './resume-parser.js';
 import { generateAllMarkdowns } from './md-generator.js';
-import pdf from 'pdf-parse';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -140,8 +139,13 @@ async function main() {
             const templatePath = await downloadTemplate(answers.theme);
             console.log(`\nTemplate downloaded to: ${templatePath}`);
 
-            const resumeJson = await parse(answers.resumeFile);
-            console.log('Generated JSON object..\n');
+            // const resumeJson = await parse(answers.resumeFile);
+            const resumeText = await fs.readFile(
+                'samples/liza-parsed.json',
+                'utf8'
+            ); // TODO for debugging
+            const resumeJson = JSON.parse(resumeText);
+            // console.log('Generated JSON object..\n', resumeJson);
 
             // TODO use user selected path here
             generateAllMarkdowns(resumeJson, './liza-portfolio');

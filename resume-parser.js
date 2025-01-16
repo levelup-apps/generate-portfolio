@@ -1,11 +1,12 @@
 import { generateObject } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { anthropic, createAnthropic } from "@ai-sdk/anthropic";
+import 'dotenv/config';
 
 import fs from 'fs/promises';
 import path from "path";
 import { fileURLToPath } from "url";
-import pdf from 'pdf-parse';
+import pdf from 'pdf-extraction';
 
 import { resumeSchema } from "./resume-schema.js";
 
@@ -99,13 +100,13 @@ Please process step by step and validate against these requirements.
 
     try {
         // Read API key from env local, but this is not working yet.
-        // const customAnthropic = createAnthropic({
-        //     apiKey: process.env.ANTHROPIC_API_KEY,
-        //     // Add other options as needed
-        // });
+        const customAnthropic = createAnthropic({
+            apiKey: process.env.ANTHROPIC_API_KEY,
+            // Add other options as needed
+        });
 
         // const model = openai("gpt-4");
-        const model = anthropic("claude-3-5-sonnet-latest");
+        const model = customAnthropic("claude-3-5-sonnet-latest");
 
         const { object } = await generateObject({
             model: model,
