@@ -25,7 +25,7 @@ const PORTFOLIO_SECTIONS = {
 };
 
 const THEMES = {
-    SIMPLE: 'Simple [View sample: https://portfolio-generator-sample.vercel.app/]',
+    SIMPLE: 'Simple Circles [View sample: https://portfolio-template-sage-six.vercel.app/]',
     RETRO: 'Retro (coming soon)',
 };
 
