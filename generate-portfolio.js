@@ -3,6 +3,7 @@ import inquirerFuzzyPath from 'inquirer-fuzzy-path';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
+import {constants} from 'fs';
 import path from 'path';
 import { parseResume } from './resume-parser.js';
 import { generateAllMarkdowns } from './md-generator.js';
@@ -55,6 +56,18 @@ async function promptUser() {
             depthLimit: 5,
             excludePath: nodePath => nodePath.startsWith('node_modules'),
             excludeFilter: nodePath => !nodePath.endsWith('.pdf') && !nodePath.endsWith('.txt')
+        },
+        {
+            type: 'fuzzypath', // Pf5f8
+            name: 'profileImageFilePath',
+            message: 'Enter the path to your profile image (png):',
+            itemType: 'any',
+            rootPath: '.',
+            suggestOnly: false,
+            default: 'samples/',
+            depthLimit: 5,
+            excludePath: nodePath => nodePath.startsWith('node_modules'),
+            excludeFilter: nodePath => !nodePath.endsWith('.png')
         },
         {
             type: 'checkbox',
@@ -180,6 +193,18 @@ async function main() {
 
             generateAllMarkdowns(resumeJson, portfolioPath);
             console.log('> Extracted resume content into portfolio.\n');
+
+            // Add the image (profileImage) to the public folder in the portfolio template
+            try {
+                const sourcePath = join(__dirname, answers.profileImageFilePath);
+                const destinationPath = join(portfolioPath, 'public', 'hero-image.png');
+                console.log(`src: ${sourcePath}, dest: ${destinationPath}`);
+
+                fs.copyFileSync(sourcePath, destinationPath, constants.COPYFILE_FICLONE);
+                console.log('Profile Image copied successfully');
+            } catch (error) {
+                console.error('Error copying image:', error);
+            }
 
             console.log(
                 `> Portfolio local copy available at: ${portfolioPath}`
