@@ -27,7 +27,7 @@ const PORTFOLIO_SECTIONS = {
 
 const THEMES = {
     SIMPLE: 'Simple Circles [View sample: https://portfolio-template-sage-six.vercel.app/]',
-    RETRO: 'Retro (coming soon)',
+    RETRO: 'Minimalist (coming soon) [View sample: https://v0-student-portfolio-3gvgn2b8tnk-g123n62zh.vercel.app/]',
 };
 
 async function validateFile(filePath) {
