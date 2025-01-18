@@ -27,6 +27,8 @@ const PORTFOLIO_SECTIONS = {
 
 const THEMES = {
     SIMPLE: 'Simple Circles [View sample: https://portfolio-template-sage-six.vercel.app/]',
+    COLORFUL:
+        'Colorful [View sample: https://portfolio-template-2-three.vercel.app/]',
     RETRO: 'Minimalist (coming soon) [View sample: https://v0-student-portfolio-3gvgn2b8tnk-g123n62zh.vercel.app/]',
 };
 
@@ -135,6 +137,7 @@ async function downloadTemplate(theme) {
         console.log(`ERROR: Failed to create folder. `, error);
     }
 
+    // TODO: update to actually use the selected theme
     const degitProcess = spawn('npx', ['degit', 'levelup-apps/portfolio-template', '--force', portfolioPath]);
 
     degitProcess.stdout.on('data', (data) => {
