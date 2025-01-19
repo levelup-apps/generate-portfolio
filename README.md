@@ -10,8 +10,11 @@ The tool can extract portfolio details from the downloaded LinkedIn resume (PDF)
 - Generate a customizable portfolio site
 - Fully customizable
 
+## Prerequisites
+- `gh` - [GitHub CLI](https://cli.github.com/) (which is already authenticated with your GitHub account.
+- `pnpm` - Node pacakge manager
 
-## Installation
+## Installation 
 1. Clone the repository
 ```bash
 git clone
