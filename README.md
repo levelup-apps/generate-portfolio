@@ -16,10 +16,6 @@ Whether you're a seasoned developer or just starting your career, this tool simp
 * **Flexible deployment**: Run locally or deploy to the cloud for maximum visibility
 * **Maintain with ease**: Keep your portfolio up-to-date in your own GitHub repository
 
-- Extract portfolio details from LinkedIn resume (PDF)
-- Generate a customizable portfolio site
-- Fully customizable
-
 ## Prerequisites
 - `gh` - [GitHub CLI](https://cli.github.com/) (which is already authenticated with your GitHub account.
 - `pnpm` - Node pacakge manager
