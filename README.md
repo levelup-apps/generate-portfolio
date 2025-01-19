@@ -1,4 +1,7 @@
 ## Generate customizable portfolio site from LinkedIn Resume
+
+[![Demo video](http://img.youtube.com/vi/M9KssZnfZrw/maxresdefault.jpg)](https://www.youtube.com/watch?v=M9KssZnfZrw)
+
 This project is a simple way to generate a customizable portfolio site from your LinkedIn resume. 
 The tool can extract portfolio details from the downloaded LinkedIn resume (PDF). The site is fully customizable and can be easily modified to fit your needs.
 
